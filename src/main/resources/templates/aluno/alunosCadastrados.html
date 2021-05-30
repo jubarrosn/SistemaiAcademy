@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>iAcademy: Aluno Cadastrados</title>
+</head>
+<body>
+<div class="table-responsive{-sm|-md|-lg|-xl|-xxl}">
+	  			
+	  			<table class="table table-bordered border-primary table-responsive">
+					
+					<thead>
+					    <tr>
+					      <th scope="col">ID-ALuno</th>						      
+					      <th scope="col">Matricula</th>			      
+					      <th scope="col">Primeiro Nome</th>					      
+					      <th scope="col">SobreNome</th>
+					      <th scope="col">Orientação Médica</th>
+	  					</tr>
+	  				</thead>
+	  				
+					<tbody>
+					
+						<tr th:each="aluno : ${alunos}">
+					
+							<td th:text="${aluno.alun_matricula}"></td>
+							<td th:text="${aluno.alun_nome}"></td>
+							<td th:text="${aluno.alun_sobrenome}"></td>
+							<td th:text="${aluno.alun_orient_medic}"></td>
+							<td>
+								<a th:href="@{/alunoEdit/{alun_matricula}(alun_matricula=${aluno.alun_matricula})}">
+									<i class="material-icons">edit</i>					
+								</a>				
+							</td>
+							
+						</tr>
+						
+					</tbody>
+					
+			</table>
+			
+		</div>
+</body>
+</html>

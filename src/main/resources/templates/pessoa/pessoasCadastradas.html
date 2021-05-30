@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>iAcademy: Pessoas Cadastradas</title>
+</head>
+<body>
+<div class="table-responsive{-sm|-md|-lg|-xl|-xxl}">
+	  			
+	  			<table class="table table-bordered border-primary table-responsive">
+					
+					<thead>
+					    <tr>
+					      <th scope="col">ID-Pessoa</th>
+					      <th scope="col">Primeiro Nome</th>
+					      <th scope="col">Sobrenome</th>
+					      <th scope="col">Data de Nasc.</th>
+					      <th scope="col">Sexo</th>
+					      <th scope="col">Naturalidade</th>
+					      <th scope="col">Nacionalidade</th>
+					      <th scope="col">CPF</th>
+					      <th scope="col">RG</th>
+					      <th scope="col">Data de emissão</th>
+					      <th scope="col">Telefone</th>
+					      <th scope="col">Endereço</th>
+					      <th scope="col">Orientação Médica</th>
+					      
+					    </tr>
+					</thead>
+					<tbody>
+					
+					<tr th:each="pessoa : ${pessoas}">
+					
+						<td th:text="${pessoa.pes_iden}"></td>
+						<td th:text="${pessoa.pes_prim_nome}"></td>
+						<td th:text="${pessoa.pes_sobrenome}"></td>
+						<td th:text="${pessoa.pes_data_nasc}"></td>
+						<td th:text="${pessoa.pes_genero}"></td>
+						<td th:text="${pessoa.pes_naturalidade}"></td>
+						<td th:text="${pessoa.pes_nacionalidade}"></td>
+						<td th:text="${pessoa.pes_cpf}"></td>
+						<td th:text="${pessoa.pes_rg}"></td>
+						<td th:text="${pessoa.pes_rg_emissao}"></td>
+						<td th:text="${pessoa.pes_telefone}"></td>
+						<td th:text="${pessoa.pes_endereco}"></td>
+						<td th:text="${pessoa.pes_orient_medic}"></td>
+						<td>
+							<a th:href="@{/pessoaEdit/{id_pessoa}(id_pessoa=${pessoa.pes_iden})}">
+								<i class="material-icons">edit</i>					
+							</a>
+						</td>
+						<td>
+							<a th:href="@{/pessoaDelete/{id_pessoa}(id_pessoa=${pessoa.pes_iden})}">
+								<i class="material-icons">delete</i>		
+							</a>							
+						</td>
+					</tr>
+				<tbody>
+			</table>
+				
+		</div>
+</body>
+</html>
