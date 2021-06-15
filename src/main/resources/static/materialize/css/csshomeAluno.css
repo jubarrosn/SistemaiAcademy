@@ -13,3 +13,8 @@ header{
 body{
 	padding: 3px;
 }
+
+#tableTreino {
+	
+	display: none;
+}
