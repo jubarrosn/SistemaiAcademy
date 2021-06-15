@@ -147,23 +147,23 @@
 		          <label for="altura">Altura </label>
 		        </div>
 		        
-		        <div class="input-field col s2 center">
+		       <!--  <div class="input-field col s2 center">
 		        <a class="waves-effect waves-light btn" onclick="calculoImc()">IMC</a>
 		        </div>
-		        
+		        -->
 		        <div class="input-field col s2">
 		          <input id="massaCorporal" type="text" name="massaCorporal" placeholder="Digite somente números">
 		          <label for="massaCorporal">Massa Corporal-IMC </label>
 		        </div>
 				
-				<div class="input-field col s12">
+				<div class="input-field col s6">
 		          <input id="pes_orient_medic" type="text" autocomplete="off" name="pes_orient_medic">
 		          <label for="pes_orient_medic">Orientação Médica </label>
 		        </div>
 		        
 				<div class="row">
 				<div class="input-field col s10">							
-					<button action="alunoSave" method="POST" met class="btn waves-effect waves-light right" type="submit" name="action">Salvar
+					<button action="alunoSave" method="POST" class="btn waves-effect waves-light right" type="submit" name="action">Salvar
 						<i class="material-icons right">save</i>
 					</button>
 				</div>
@@ -171,7 +171,7 @@
 				</form>	
 								
 				<div class="input-field col s2">
-					<a href="/homeAdm">						
+					<a href="/homeProfessor">						
 					<button class="btn waves-effect waves-light left" type="button"  onClick="Cancel()">Cancelar
 						<i class="material-icons rigth">cancel</i>
 					</button>

@@ -98,7 +98,7 @@
             <div class="container-fluid">
 
          
-	 	<h3> Cadastro de Treino: </h3>
+	 	 <h3>Treinos: </h3>
 	 	
 	 	<div class="divider"></div>
 			<div class="table-responsive{-sm|-md|-lg|-xl|-xxl}">
@@ -125,10 +125,10 @@
 					<tr th:each="treino : ${treinos}">
 					
 					<!-- Treino treino = new Treino(treinoRepository.findById); -->
-						<td th:text="${treino.getTreino_iden(newTreino.getTreino_iden(treino_iden)}"></td>
+						<td th:text="${treino.treino_iden}"></td>
 						<td th:text="${treino.aluno.pessoa.pes_prim_nome}"></td>
 						<td th:text="${treino.professor.funcionario.pessoa.pes_prim_nome}"></td>
-						<td th:text="${treino.esportes(Esporte.getDescricao)}"></td>
+						<td th:text="${treino.esportes(getDescricao)}"></td>
 						<td th:text="${treino.exercicios}"></td>
 						<td th:text="${treino.aplicPeso}"></td>
 						<td th:text="${treino.aplicRepeticoes}"></td>

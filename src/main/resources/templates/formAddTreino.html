@@ -104,38 +104,47 @@
 	 		
 		<div class="row">
 		
-			<form class="col s12">
+			<form class="col s12" action="saveTreino" method="POST">
 			
 		 	<div class="input-field col s2">
-		          <label>ID-Treino: </label>
+		          <label>ID-Treino </label>
 		          <input name="treino_iden" disabled type="number">
 		   	</div>  
 		   	
 		   	<div class="input-field col s3">
 		          <input id="pes_sobrenome" type="text" autocomplete="off" name="pes_sobrenome">
-		          <label for="pes_sobrenome">Aluno: </label>
+		          <label for="pes_sobrenome">Aluno </label>
 		    </div>
 		    
 		    <div class="input-field col s3">
 		          <input id="pes_sobrenome" type="text" autocomplete="off" name="pes_sobrenome">
-		          <label for="pes_sobrenome">Professor Responsável: </label>
+		          <label for="pes_sobrenome">Professor Responsável </label>
 		    </div>
 		    
 		    <div class="input-field col s2">
+		   	  <select name="AplicPeso">
+		   	  <option value="" disabled selected>Selecione o esporte</option>
+		   	  <option th:each="EsportesOpt : ${T(br.com.iacademy.model.Esportes).values()}" 
+        				th:value="${EsportesOpt}" th:text="${EsportesOpt}"></option>
+        		</select>
+		   	</div>  
+		   	
+		    <!-- <div class="input-field col s2">
 		   	  <select class="browser-default">
 			    <option value="" disabled selected>Selecione esporte</option>
 			    <option value="MUSCULACAO">Musculação</option>
 				<option value="PILATES">Pilates</option>
 				<option value="LUTAS">Lutas Livres</option>
 			  </select>  
-		     </div>		
-		         
-		    <!--<div class="input-field col s2">
+		     </div>	-->	
+		      
+		    <!-- <div class="input-field col s2">
 		          <input id="pes_sobrenome" type="text" autocomplete="off" name="pes_sobrenome">
-		          <label for="pes_sobrenome">Exercício: </label>
-		    </div>-->
+		          <label for="pes_sobrenome">Exercício </label>
+		    </div>
+		    -->
 		    
-		    <div class="input-field col s2">
+		    <!-- <div class="input-field col s2">
 		   	  <select class="browser-default">
 			    <option value="" disabled selected>Selecione exercício</option>
 			    <option value="ESTEIRA">Esteira</option>
@@ -144,10 +153,25 @@
 				<option value="HALTERE">Haltere</option>
 				<option value="REMADA">Remada</option>
 				</select>  
-		      </div>
+		      </div>-->
+		      
+		     <div class="input-field col s2">
+		   	  <select name="Exercicios">
+		   	  <option value="" disabled selected>Selecione exercício</option>
+		   	  <option th:each="ExerciciosOpt : ${T(br.com.iacademy.model.Exercicios).values()}" 
+        				th:value="${ExerciciosOpt}" th:text="${ExerciciosOpt}"></option>
+        		</select>
+		   	</div>  
 
 		   	<div class="input-field col s2">
-		   	  <select class="browser-default">
+		   	  <select name="AplicPeso">
+		   	  <option value="" disabled selected>Selecione peso</option>
+		   	  <option th:each="AplicPesoOpt : ${T(br.com.iacademy.model.AplicPeso).values()}" 
+        				th:value="${AplicPesoOpt}" th:text="${AplicPesoOpt}"></option>
+        		</select>
+		   	</div>  
+		   	  
+		   	  <!-- class="browser-default">
 			    <option value="" disabled selected>Selecione peso</option>
 			    <option value="PESO1">1 Kg</option>
 				<option value="PESO2">2 kg</option>
@@ -248,11 +272,10 @@
 				<option value="PESO97">97 kg</option>
 				<option value="PESO98">98 kg</option>
 				<option value="PESO99">99 kg</option>
-				<option value="PESO100">100 kg</option>
-			  </select>  
-		      </div>
+				<option value="PESO100">100 kg</option>-->
+			
 		      
-		     <div class="input-field col s2"> 
+		     <!-- <div class="input-field col s2"> 
 			  <select class="browser-default">
 			    <option value="" disabled selected>Selecione série</option>
 			    <option value="SERIE1">1 série</option>
@@ -271,20 +294,39 @@
 				<option value="SERIE14">14 séries</option>
 				<option value="SERIE15">15 séries</option>
 		    </select>  
-		    </div>
+		    </div>-->
+		    
+		    <div class="input-field col s2">
+		   	  <select name="AplicSerie">
+		   	  <option value="" disabled selected>Selecione série</option>
+		   	  <option th:each="AplicSerieOpt : ${T(br.com.iacademy.model.AplicSerie).values()}" 
+        				th:value="${AplicSerieOpt}" th:text="${AplicSerieOpt}"></option>
+        		</select>
+		   	</div> 
+		   	
+		   	<div class="input-field col s2">
+		   	  <select name="AplicRepeticoes">
+		   	  <option value="" disabled selected>Selecione repetições</option>
+		   	  <option th:each="AplicRepeticoesOpt : ${T(br.com.iacademy.model.AplicRepeticoes).values()}" 
+        				th:value="${AplicRepeticoesOpt}" th:text="${AplicRepeticoesOpt}"></option>
+        		</select>
+		   	</div> 
 		   
 		     <div class="input-field col s2">
 		           <input id="treino_data_inicial" autocomplete="off" type="text" class="datepicker" name="pes_data_nasc">
-		         <label for="treino_data_inicial">Data inicial: </label>
+		         <label for="treino_data_inicial">Data inicial </label>
 		    </div>
 		        
 		    <div class="input-field col s2">
 		         <input id="treino_vencimento" autocomplete="off" type="text" class="datepicker" name="pes_data_nasc">
-		         <label for="treino_vencimento">Data final: </label>
+		         <label for="treino_vencimento">Data final </label>
 		    </div>
 		     <div class="input-field col s2"></div>
 		    <div class="input-field col s2"></div>
-		    <div class="input-field col s2">
+		    
+		    
+		   
+		   <!-- <div class="input-field col s2">
 			  <select class="browser-default">
 			    <option value="" disabled selected>Selecione repetição</option>
 			    <option value="REPETIR1">1 Repetição</option>
@@ -388,9 +430,9 @@
 				<option value="REPETIR99">99 Repetições</option>
 				<option value="REPETIR100">100 Repetições</option>
 			  </select>  
-		    </div>
+		    </div>-->
 		    
-		     <div class="input-field col s2">
+		     <!-- <div class="input-field col s2">
 		   	  <select class="browser-default">
 			    <option value="" disabled selected>Selecione um turno</option>
 			    <option value="MATUTINO">Matutino</option>
@@ -399,13 +441,13 @@
 				<option value="INTEGRAL">Integral</option>  
 		      </select>
 		     </div>
-		     
+		     -->
 		   
 		    </div>
 			<div class="row">
 			
 				<div class="input-field col s10">							
-					<button action="treinoSave" method="POST" met class="btn waves-effect waves-light right" type="submit" name="action">Salvar
+					<button action="saveTreino" method="POST" class="btn waves-effect waves-light right" type="submit" name="action">Salvar
 						<i class="material-icons right">save</i>
 					</button>
 				</div>

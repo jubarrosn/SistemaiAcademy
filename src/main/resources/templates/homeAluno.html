@@ -7,65 +7,98 @@
 	      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 	      
 	      <!--Import materialize.css-->
-	      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
-	      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
-	      <link type="text/css" rel="stylesheet" href="/materialize/css/csshomeAluno.css"/>
+	      <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.css"  media="screen,projection"/>
+	      <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css"  media="screen,projection"/>
+	      <link type="text/css" rel="stylesheet" href="../materialize/css/csshomeAluno.css"/>
 	
 	      <!--Let browser know website is optimized for mobile-->
 	      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     		<script src="https://code.jquery.com/jquery-3.1.1.min.js"
            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
            crossorigin="anonymous"></script>
-		
+           
+			<!-- <link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">-->
+			
 			<meta charset="UTF-8"/>
 			<TITLE>Sistema iAcademy</TITLE>
 	</HEAD>
 		
 	<body>
-
+	
+		<!--JavaScript at end of body for optimized loading-->
+		<script type="text/javascript" src="/materialize/js/materialize.js"></script>
+		<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+		<!-- <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>-->
+		
 		<div class="left">
 			<img src="../materialize/images/iacademy.jpg" class="responsive">
 	        <img src="../materialize/images/headerlogo.jpg" class="responsive">
-	        </div>
-			<!--<div class="center">
-			<h5>Bem-vindo </h5>
-		</div>-->
-	 
-
-	    
+        </div>
+			
+	    <div class="row center">
+	    <div class="input-field col s2"></div>
+	    <div class="input-field col s2">
+				<input id="treino_iden" type="number" autocomplete="off" name="treino_iden" placeholder="Digite sua matrícula">
+	          	<label for="treino_iden">Treino </label>
+	    </div>
+	   	<div class="input-field col s2">
+	   			<button class="waves-effect waves-light btn"  action="buscaMatricula" method="GET" onclick="treino()">Pesquisar
+					<i class="material-icons right">search</i>
+				</button>
+		</div>
+		</div>
+		
+	   	<div class="divider"></div>
 	   	
 	   	
-		    <div class="table-responsive{-sm|-md|-lg|-xl|-xxl}">
+	   	<div id="tableTreino">
+	   	
+		    <div class="table-responsive{-sm|-md|-lg|-xl|-xxl}" id="select">
 	
 		  			<table class="layout display responsive-table col s12">
 						
 						<thead>
 						    <tr>						      					      
-						     	<th class="container-fluid" scope="col">Exercício</th></br>
-								<th class="container-fluid" scope="col">Descrição</th>
+						     	<th class="container-fluid" scope="col">#</th></br>
+								<th class="container-fluid" scope="col">Esporte</th>
+								<th class="container-fluid" scope="col">Exercício</th>
 								<th class="container-fluid" scope="col">Peso</th>	
 						   		<th class="container-fluid" scope="col">Repetições</th>
-						   		<th class="container-fluid" scope="col">Série</th>					      
-						   		<th class="container-fluid" scope="col">Data Inicial</th>
+						   		<th class="container-fluid" scope="col">Série</th>			
 						   		<th class="container-fluid" scope="col">Vencimento</th>
+						   	</tr>
 						</thead>
 						<tbody>
 							<tr th:each="treino : ${treinos}">														
 								<td class="container-fluid" th:text="${treino.treino_iden}"></td></br>
-								<td class="container-fluid" th:text="${exerc_nome}"></td>
-								<td class="container-fluid" th:text="${treino.exerc_descricao}"></td>
-								<td class="container-fluid" th:text="${treino.aplicPeso}"></td>
-								<td class="container-fluid" th:text="${treino.aplicRepeticoes}"></td>
-								<td class="container-fluid" th:text="${treino.aplicSerie}"></td>
-							<tr th:each="treino : ${treinos}">		
-								<td class="container-fluid" th:text="${treino.treino_data_inicial}"></td>
+								<td class="container-fluid" th:text="${treino.esportes.descricao}"></td>
+								<td class="container-fluid" th:text="${treino.exercicio.descricao}"></td>
+								<td class="container-fluid" th:text="${treino.aplicPeso.descricao}"></td>
+								<td class="container-fluid" th:text="${treino.aplicRepeticoes.descricao}"></td>
+								<td class="container-fluid" th:text="${treino.aplicSerie.descricao}"></td>	
 								<td class="container-fluid" th:text="${treino.treino_vencimento}"></td>
+							</tr>
 						</tbody>
 					
 					</table> 
 		    </div>
-		    
+		 <div class="divider"></div>  
+		 </div>   
+		 
 	    </div>
-	    
+	<script>
+		$(document).ready(function(){
+			
+		});
+		
+		
+		function treino(){
+			$('#tableTreino').css("display","block");
+		};
+	        
+		
+	
+	</script>
 	</body>
 </html>
