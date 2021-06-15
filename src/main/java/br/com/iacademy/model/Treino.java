@@ -51,14 +51,14 @@ public class Treino  implements Serializable{
 	
 	@NotNull//(message = "Informe o exercício.")
 	@Enumerated(EnumType.STRING)
-	public static Exercicios exercicios;
+	public Exercicios exercicios;
 	
 	@NotNull//(message = "Informe o esporte.")
 	@Enumerated(EnumType.STRING)
-	public static Esportes esportes;
+	public Esportes esportes;
 	
-	@Enumerated(EnumType.STRING)
-	public static Turno turno;
+	//@Enumerated(EnumType.STRING)
+	//public Turno turno;
 	
 	@NotNull//(message = "Informe o professor responsável.")
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
