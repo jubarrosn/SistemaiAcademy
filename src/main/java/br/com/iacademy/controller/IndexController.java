@@ -18,10 +18,10 @@ public class IndexController {
 		return "login";
 	}
 	
-	/*@RequestMapping("/")
-	public String index() {
-		return "login";
-	}*/
+	@RequestMapping("/saveTreino")
+	public String saveTreino() {
+		return "formAddTreino";
+		}
 	
 	@RequestMapping("/login")
 	public String login() {
