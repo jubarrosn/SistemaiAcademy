@@ -1,5 +1,6 @@
-package br.com.iacademy.model;
+/*package br.com.iacademy.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,11 +15,16 @@ import javax.validation.constraints.NotNull;
 /*
 @Inheritance(strategy = InheritanceType.JOINED) 
 @Table(name="Exercicio")
-@DiscriminatorValue("exerc_iden")*/
-public class Exercicio{
+@DiscriminatorValue("exerc_iden")* /
+public class Exercicio  implements Serializable{
 
 
-	/*@JoinColumn(name = "exerc_iden", referencedColumnName = "exerc_iden", insertable = false, updatable = false)*/
+	/**
+	 * 
+	 * /
+	private static final long serialVersionUID = 1L;
+
+	/*@JoinColumn(name = "exerc_iden", referencedColumnName = "exerc_iden", insertable = false, updatable = false)* /
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long exerc_iden; 
@@ -27,7 +33,7 @@ public class Exercicio{
 	private String exerc_nome;
 	
 	@NotNull
-	private String exerc_descrição;
+	private String exerc_descricao;
 	
 	@OneToMany
     @JoinColumn(name = "exerc_iden") // Esta coluna está na tabela "Treino".
@@ -53,21 +59,30 @@ public class Exercicio{
 		this.exerc_nome = exerc_nome;
 	}
 
-	public String getExerc_descrição() {
-		return exerc_descrição;
+	public String getExerc_descricao() {
+		return exerc_descricao;
 	}
 
-	public void setExerc_descrição(String exerc_descrição) {
-		this.exerc_descrição = exerc_descrição;
+	public void setExerc_descricao(String exerc_descricao) {
+		this.exerc_descricao = exerc_descricao;
+	}
+
+	public List<Treino> getTreino() {
+		return treino;
+	}
+
+	public void setTreino(List<Treino> treino) {
+		this.treino = treino;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((exerc_descrição == null) ? 0 : exerc_descrição.hashCode());
+		result = prime * result + ((exerc_descricao == null) ? 0 : exerc_descricao.hashCode());
 		result = prime * result + (int) (exerc_iden ^ (exerc_iden >>> 32));
 		result = prime * result + ((exerc_nome == null) ? 0 : exerc_nome.hashCode());
+		result = prime * result + ((treino == null) ? 0 : treino.hashCode());
 		return result;
 	}
 
@@ -80,10 +95,10 @@ public class Exercicio{
 		if (getClass() != obj.getClass())
 			return false;
 		Exercicio other = (Exercicio) obj;
-		if (exerc_descrição == null) {
-			if (other.exerc_descrição != null)
+		if (exerc_descricao == null) {
+			if (other.exerc_descricao != null)
 				return false;
-		} else if (!exerc_descrição.equals(other.exerc_descrição))
+		} else if (!exerc_descricao.equals(other.exerc_descricao))
 			return false;
 		if (exerc_iden != other.exerc_iden)
 			return false;
@@ -92,6 +107,11 @@ public class Exercicio{
 				return false;
 		} else if (!exerc_nome.equals(other.exerc_nome))
 			return false;
+		if (treino == null) {
+			if (other.treino != null)
+				return false;
+		} else if (!treino.equals(other.treino))
+			return false;
 		return true;
 	}
 
@@ -99,17 +119,21 @@ public class Exercicio{
 		super();
 	}
 
-	public Exercicio(long exerc_iden, @NotNull String exerc_nome, @NotNull String exerc_descrição) {
+	public Exercicio(long exerc_iden, @NotNull String exerc_nome, @NotNull String exerc_descricao,
+			List<br.com.iacademy.model.Treino> treino) {
 		super();
 		this.exerc_iden = exerc_iden;
 		this.exerc_nome = exerc_nome;
-		this.exerc_descrição = exerc_descrição;
+		this.exerc_descricao = exerc_descricao;
+		this.treino = treino;
 	}
 
 	@Override
 	public String toString() {
-		return "Exercicio [exerc_iden=" + exerc_iden + ", exerc_nome=" + exerc_nome + ", exerc_descrição="
-				+ exerc_descrição + "]";
+		return "Exercicio [exerc_iden=" + exerc_iden + ", exerc_nome=" + exerc_nome + ", exerc_descricao="
+				+ exerc_descricao + ", treino=" + treino + "]";
 	}
+
 	
-}
+	
+}*/

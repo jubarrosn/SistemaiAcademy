@@ -1,4 +1,4 @@
-package br.com.iacademy.model;
+/*package br.com.iacademy.model;
 
 public enum TipoPessoa {
 	
@@ -14,4 +14,4 @@ public enum TipoPessoa {
 	public String getDescricao() {
 		return descricao;
 	}
-}
+}*/

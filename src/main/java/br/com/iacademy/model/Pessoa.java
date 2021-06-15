@@ -1,7 +1,8 @@
 package br.com.iacademy.model;
 
-import java.util.List;
+import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,33 +10,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-/*
-@Inheritance(strategy = InheritanceType.JOINED) 
-@Table(name="Pessoa")
-@DiscriminatorValue("pes_iden")
-*/
-public class Pessoa{
+public class Pessoa implements Serializable{
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	/*@JoinColumn(name = "pes_iden", referencedColumnName = "pes_iden", insertable = false, updatable = false)*/
 	private long pes_iden;
-	@NotNull
+	
+	@NotNull(message = "Informe o primeiro nome.")
     private String pes_prim_nome;
-	@NotNull
+	
+	@NotNull(message = "Informe o sobrenome.")
     private String pes_sobrenome;
 	
     private String pes_endereco; 
-    
-    @CPF
-    @NotNull
+
+    @NotNull(message = "Informe o CPF.")
+    @CPF(message = "CPF inválido.")
     private long pes_cpf;
     
     private long pes_rg;
@@ -43,13 +46,14 @@ public class Pessoa{
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private String pes_rg_emissao;
     
-    @NotNull
+    @NotNull(message = "Informe o Telefone.")
     private long pes_telefone; 
     
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
     private String pes_data_nasc;
     
-    @NotNull
+    @NotNull(message = "Informe o sexo.")
 	@Enumerated(EnumType.STRING)
     private SexoPessoa sexo;
         
@@ -59,21 +63,20 @@ public class Pessoa{
     
     private String pes_orient_medic;
     
-    @OneToMany
-    @JoinColumn(name = "pes_iden") // Esta coluna está na tabela "aluno".
-    private List<Aluno> aluno;
+    @OneToOne(cascade = {CascadeType.ALL}) // Esta coluna está na tabela "Aluno".
+    @JoinColumn(name = "alun_matricula")
+	private Aluno aluno;
     
-    @OneToMany
-    @JoinColumn(name = "pes_iden") // Esta coluna está na tabela "funcionario".
-    private List<Funcionario> funcionario;
+    @OneToOne(cascade = {CascadeType.ALL}) // Esta coluna está na tabela "Funcionário".
+    @JoinColumn(name = "func_iden")
+    private Funcionario funcionario;
     
-    public List<Aluno> Aluno() {
-        return aluno;
-    }
+  //@OneToMany(mappedBy = "pessoa")
+    //private Collection<Usuario> usuario;
     
-    public List<Funcionario> Funcionario() {
-        return funcionario;
-    }
+  //  private Collection<GrantedAuthority> permissoes = new ArrayList<>();
+	
+    
 
 	public long getPes_iden() {
 		return pes_iden;
@@ -179,10 +182,32 @@ public class Pessoa{
 		this.pes_orient_medic = pes_orient_medic;
 	}
 
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((aluno == null) ? 0 : aluno.hashCode());
+		result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
 		result = prime * result + (int) (pes_cpf ^ (pes_cpf >>> 32));
 		result = prime * result + ((pes_data_nasc == null) ? 0 : pes_data_nasc.hashCode());
 		result = prime * result + ((pes_endereco == null) ? 0 : pes_endereco.hashCode());
@@ -208,6 +233,16 @@ public class Pessoa{
 		if (getClass() != obj.getClass())
 			return false;
 		Pessoa other = (Pessoa) obj;
+		if (aluno == null) {
+			if (other.aluno != null)
+				return false;
+		} else if (!aluno.equals(other.aluno))
+			return false;
+		if (funcionario == null) {
+			if (other.funcionario != null)
+				return false;
+		} else if (!funcionario.equals(other.funcionario))
+			return false;
 		if (pes_cpf != other.pes_cpf)
 			return false;
 		if (pes_data_nasc == null) {
@@ -260,17 +295,17 @@ public class Pessoa{
 			return false;
 		return true;
 	}
-	
-	
 
 	public Pessoa() {
 		super();
 	}
 
-	
-	public Pessoa(long pes_iden, @NotNull String pes_prim_nome, @NotNull String pes_sobrenome, String pes_endereco,
-			@NotNull long pes_cpf, long pes_rg, String pes_rg_emissao, @NotNull long pes_telefone, String pes_data_nasc,
-			@NotNull SexoPessoa sexo, String pes_naturalidade, String pes_nacionalidade, String pes_orient_medic) {
+	public Pessoa(long pes_iden, @NotNull(message = "Informe o primeiro nome.") String pes_prim_nome,
+			@NotNull(message = "Informe o sobrenome.") String pes_sobrenome, String pes_endereco,
+			@NotNull(message = "Informe o CPF.") @CPF(message = "CPF inválido.") long pes_cpf, long pes_rg,
+			String pes_rg_emissao, @NotNull(message = "Informe o Telefone.") long pes_telefone, String pes_data_nasc,
+			@NotNull(message = "Informe o sexo.") SexoPessoa sexo, String pes_naturalidade, String pes_nacionalidade,
+			String pes_orient_medic, Aluno aluno, Funcionario funcionario) {
 		super();
 		this.pes_iden = pes_iden;
 		this.pes_prim_nome = pes_prim_nome;
@@ -285,6 +320,8 @@ public class Pessoa{
 		this.pes_naturalidade = pes_naturalidade;
 		this.pes_nacionalidade = pes_nacionalidade;
 		this.pes_orient_medic = pes_orient_medic;
+		this.aluno = aluno;
+		this.funcionario = funcionario;
 	}
 
 	@Override
@@ -293,8 +330,9 @@ public class Pessoa{
 				+ ", pes_endereco=" + pes_endereco + ", pes_cpf=" + pes_cpf + ", pes_rg=" + pes_rg + ", pes_rg_emissao="
 				+ pes_rg_emissao + ", pes_telefone=" + pes_telefone + ", pes_data_nasc=" + pes_data_nasc + ", sexo="
 				+ sexo + ", pes_naturalidade=" + pes_naturalidade + ", pes_nacionalidade=" + pes_nacionalidade
-				+ ", pes_orient_medic=" + pes_orient_medic + "]";
+				+ ", pes_orient_medic=" + pes_orient_medic + ", aluno=" + aluno + ", funcionario=" + funcionario + "]";
 	}
     
-
+   
+	
 }

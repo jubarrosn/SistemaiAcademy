@@ -12,7 +12,7 @@ import br.com.iacademy.model.Funcionario;
 @Transactional
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 	
-	Optional<Funcionario> findById(Long id);
+	Optional<Funcionario> findById(long func_iden);
 	
 	//void funcionario(long func_pes_iden, long func_empr_iden, long func_crg_iden, long func_cpts,
 	//		long func_serie_cpts, int func_horario, long func_pis, long func_cpf_conjuge, long func_cnh,

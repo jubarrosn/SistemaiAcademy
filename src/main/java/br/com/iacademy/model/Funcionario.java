@@ -1,41 +1,41 @@
 package br.com.iacademy.model;
 
-import java.util.List;
+import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-/*
-@Table(name="Funcionario")
-@PrimaryKeyJoinColumn(referencedColumnName = "pes_iden")
-@DiscriminatorValue("pes_iden")
-*/
-public class Funcionario{
+public class Funcionario  implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long func_iden;
 	
-	@NotNull
+	@NotNull(message = "Informe o número da CPTS.")
 	private long func_cpts; 
 	
-	@NotNull
+	@NotNull(message = "Informe o número de série da CPTS.")
 	private long func_serie_cpts;
 	
 	private String func_serie_emissao;
 	
-	private int func_horario; 
-	
-	@NotNull
+	@NotNull(message = "Informe o número de PIS.")
 	private long func_pis; 
 	
 	private long func_cpf_conjuge; 
@@ -44,10 +44,9 @@ public class Funcionario{
     
     private String func_cnh_categ;
     
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private String func_cnh_validade;
     
-    @NotNull
+    @NotNull(message = "Informe a escolaridade.")
 	private String func_escolaridade; 
 	
 	private String func_nome_conjuge; 	
@@ -56,27 +55,25 @@ public class Funcionario{
 	
 	private String func_nome_pai; 
 	
-	@NotNull
+	@NotNull(message = "Informe a data da admissão.")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private String func_admissao; 
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private String func_demissao;
 
-	@NotNull
+	@NotNull(message = "Informe o estado cívil.")
+	@Enumerated(EnumType.STRING)
 	private EstadoCivil estadoCivil;
 
-	@ManyToOne
+	@OneToOne(cascade = {CascadeType.ALL})  // Esta coluna está na tabela "Pessoa".
     @JoinColumn(name = "pes_iden")
-	private Pessoa pessoa;
+    private Pessoa pessoa;
 	
-	@OneToMany
-    @JoinColumn(name = "func_iden") // Esta coluna está na tabela "professor".
-    private List<Professor> professor;
+	@OneToOne(cascade = {CascadeType.ALL})  // Esta coluna está na tabela "Professor".
+    @JoinColumn(name = "prof_iden")
+    private Professor professor;
 	
-	public List<Professor> Professor() {
-        return professor;
-    }
 
 	public long getFunc_iden() {
 		return func_iden;
@@ -108,14 +105,6 @@ public class Funcionario{
 
 	public void setFunc_serie_emissao(String func_serie_emissao) {
 		this.func_serie_emissao = func_serie_emissao;
-	}
-
-	public int getFunc_horario() {
-		return func_horario;
-	}
-
-	public void setFunc_horario(int func_horario) {
-		this.func_horario = func_horario;
 	}
 
 	public long getFunc_pis() {
@@ -235,7 +224,6 @@ public class Funcionario{
 		result = prime * result + (int) (func_cpts ^ (func_cpts >>> 32));
 		result = prime * result + ((func_demissao == null) ? 0 : func_demissao.hashCode());
 		result = prime * result + ((func_escolaridade == null) ? 0 : func_escolaridade.hashCode());
-		result = prime * result + func_horario;
 		result = prime * result + (int) (func_iden ^ (func_iden >>> 32));
 		result = prime * result + ((func_nome_conjuge == null) ? 0 : func_nome_conjuge.hashCode());
 		result = prime * result + ((func_nome_mae == null) ? 0 : func_nome_mae.hashCode());
@@ -244,6 +232,7 @@ public class Funcionario{
 		result = prime * result + (int) (func_serie_cpts ^ (func_serie_cpts >>> 32));
 		result = prime * result + ((func_serie_emissao == null) ? 0 : func_serie_emissao.hashCode());
 		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
+		result = prime * result + ((professor == null) ? 0 : professor.hashCode());
 		return result;
 	}
 
@@ -289,8 +278,6 @@ public class Funcionario{
 				return false;
 		} else if (!func_escolaridade.equals(other.func_escolaridade))
 			return false;
-		if (func_horario != other.func_horario)
-			return false;
 		if (func_iden != other.func_iden)
 			return false;
 		if (func_nome_conjuge == null) {
@@ -322,6 +309,11 @@ public class Funcionario{
 				return false;
 		} else if (!pessoa.equals(other.pessoa))
 			return false;
+		if (professor == null) {
+			if (other.professor != null)
+				return false;
+		} else if (!professor.equals(other.professor))
+			return false;
 		return true;
 	}
 
@@ -330,16 +322,15 @@ public class Funcionario{
 	}
 
 	public Funcionario(long func_iden, @NotNull long func_cpts, @NotNull long func_serie_cpts,
-			String func_serie_emissao, int func_horario, @NotNull long func_pis, long func_cpf_conjuge, long func_cnh,
+			String func_serie_emissao, @NotNull long func_pis, long func_cpf_conjuge, long func_cnh,
 			String func_cnh_categ, String func_cnh_validade, @NotNull String func_escolaridade,
 			String func_nome_conjuge, String func_nome_mae, String func_nome_pai, @NotNull String func_admissao,
-			String func_demissao, @NotNull EstadoCivil estadoCivil, Pessoa pessoa) {
+			String func_demissao, @NotNull EstadoCivil estadoCivil, Pessoa pessoa, Professor professor) {
 		super();
 		this.func_iden = func_iden;
 		this.func_cpts = func_cpts;
 		this.func_serie_cpts = func_serie_cpts;
 		this.func_serie_emissao = func_serie_emissao;
-		this.func_horario = func_horario;
 		this.func_pis = func_pis;
 		this.func_cpf_conjuge = func_cpf_conjuge;
 		this.func_cnh = func_cnh;
@@ -353,18 +344,20 @@ public class Funcionario{
 		this.func_demissao = func_demissao;
 		this.estadoCivil = estadoCivil;
 		this.pessoa = pessoa;
+		this.professor = professor;
 	}
 
 	@Override
 	public String toString() {
 		return "Funcionario [func_iden=" + func_iden + ", func_cpts=" + func_cpts + ", func_serie_cpts="
-				+ func_serie_cpts + ", func_serie_emissao=" + func_serie_emissao + ", func_horario=" + func_horario
-				+ ", func_pis=" + func_pis + ", func_cpf_conjuge=" + func_cpf_conjuge + ", func_cnh=" + func_cnh
-				+ ", func_cnh_categ=" + func_cnh_categ + ", func_cnh_validade=" + func_cnh_validade
-				+ ", func_escolaridade=" + func_escolaridade + ", func_nome_conjuge=" + func_nome_conjuge
-				+ ", func_nome_mae=" + func_nome_mae + ", func_nome_pai=" + func_nome_pai + ", func_admissao="
-				+ func_admissao + ", func_demissao=" + func_demissao + ", estadoCivil=" + estadoCivil + ", pessoa="
-				+ pessoa + "]";
+				+ func_serie_cpts + ", func_serie_emissao=" + func_serie_emissao + ", func_pis=" + func_pis
+				+ ", func_cpf_conjuge=" + func_cpf_conjuge + ", func_cnh=" + func_cnh + ", func_cnh_categ="
+				+ func_cnh_categ + ", func_cnh_validade=" + func_cnh_validade + ", func_escolaridade="
+				+ func_escolaridade + ", func_nome_conjuge=" + func_nome_conjuge + ", func_nome_mae=" + func_nome_mae
+				+ ", func_nome_pai=" + func_nome_pai + ", func_admissao=" + func_admissao + ", func_demissao="
+				+ func_demissao + ", estadoCivil=" + estadoCivil + ", pessoa=" + pessoa + ", professor=" + professor
+				+ "]";
 	}
 
+	
 }

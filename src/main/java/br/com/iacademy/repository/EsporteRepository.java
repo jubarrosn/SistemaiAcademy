@@ -1,4 +1,4 @@
-package br.com.iacademy.repository;
+/*package br.com.iacademy.repository;
 
 import java.util.Optional;
 
@@ -12,8 +12,16 @@ import br.com.iacademy.model.Esporte;
 @Transactional
 public interface EsporteRepository extends JpaRepository<Esporte, Long>{
 	
-	Optional<Esporte> findById(Long id);
+	Optional<Esporte> findById(Long espt_iden);
+	
+	Optional<Esporte> findByNome(String espt_nome);
+	
+	//@Query("select p from Esporte p where espt.espt_nome like %?1%")
+	//List<Esporte> findByName(String espt_nome);
+	
+	//@Query("select p from Esporte p where espt.espt_descricao like %?1%")
+	//List<Esporte> findByDescrica(String espt_descricao);
 	
 	//void esporte(long espt_iden, String espt_nome, String espt_descricao);
 	
-}
+}*/

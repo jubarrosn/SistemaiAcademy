@@ -19,7 +19,6 @@ public class Empresa implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long empr_iden;
 	
-	@CNPJ
 	@NotNull
 	private int empr_cnpj;
 	
@@ -148,6 +147,11 @@ public class Empresa implements Serializable{
 		return "Empresa [empr_iden=" + empr_iden + ", empr_cnpj=" + empr_cnpj + ", empr_contato=" + empr_contato
 				+ ", empr_razao_soc=" + empr_razao_soc + ", empr_nome_fant=" + empr_nome_fant + ", empr_endereco="
 				+ empr_endereco + "]";
+	}
+
+	public Empresa save(Empresa empresa) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -1,23 +1,14 @@
 package br.com.iacademy.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import br.com.iacademy.model.Aluno;
 import br.com.iacademy.model.Pessoa;
+import br.com.iacademy.repository.AlunoRepository;
 import br.com.iacademy.repository.PessoaRepository;
 
 @Controller
@@ -26,8 +17,43 @@ public class PessoaController {
 	
 	
 	@Autowired
-	PessoaRepository pessoaRepository;
+	PessoaRepository pessoaRepository;	
 	
+	@Autowired
+	AlunoRepository alunoRepository;	
+	
+	@RequestMapping(method = RequestMethod.GET, value="/")
+	public ModelAndView inicio() {
+		
+		ModelAndView modelAndView = new ModelAndView("/");
+		
+		modelAndView.addObject("pessoaobj", new Pessoa());
+		
+		return modelAndView;
+	}
+	
+	
+	@RequestMapping(method = RequestMethod.POST, value="**/pessoaSave")
+	public ModelAndView salvar(Pessoa pessoa, Aluno aluno) {
+		
+		pessoaRepository.save(pessoa);
+		alunoRepository.save(aluno);
+		
+		ModelAndView andView = new ModelAndView("/");
+		
+		//Iterable<Pessoa> pessoasIt = pessoaRepository.findAll();
+		
+		//andView.addObject("pessoas", pessoasIt);
+		
+		andView.addObject("pessoaobj", new Aluno());	
+		
+		return andView;
+	}
+
+
+	
+	
+	/*
 	
 	@GetMapping
 	public List<Pessoa> findAll(){
@@ -296,3 +322,4 @@ public class PessoaController {
 			return pessoaRepository.save(pessoa);
 		}
 		*/
+}

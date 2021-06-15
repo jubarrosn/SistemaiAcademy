@@ -1,45 +1,44 @@
 package br.com.iacademy.model;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Aluno{
+public class Aluno implements Serializable{
 	
-	/*@JoinColumn(name = "pes_iden", referencedColumnName = "pes_iden", insertable = false, updatable = false)*/
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int alun_matricula;
 	
-	@NotNull
+	@NotNull(message = "Informe o peso.")
 	private float peso;
 	
-	@NotNull
+	@NotNull(message = "Informe a altura.")
 	private float altura;
 	
 	private String massaCorporal;
 	
-	@ManyToOne
+	@OneToOne(cascade = {CascadeType.ALL}) // Esta coluna está na tabela "Pessoa". 
     @JoinColumn(name = "pes_iden")
 	private Pessoa pessoa;
 	
-
-	@OneToMany
-    @JoinColumn(name = "alun_matricula") // Esta coluna está na tabela "Treino".
-    private List<Treino> treino;
-	
-	public List<Treino> Treino() {
-        return treino;
-    }
+	@OneToMany(mappedBy = "aluno", cascade = {CascadeType.ALL}) // Esta coluna está na tabela "Treino".
+	public List<Treino> treino;
 
 	public int getAlun_matricula() {
 		return alun_matricula;
@@ -81,6 +80,18 @@ public class Aluno{
 		this.pessoa = pessoa;
 	}
 
+	public List<Treino> getTreino() {
+		return treino;
+	}
+
+	public void setTreino(List<Treino> treino) {
+		this.treino = treino;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -90,6 +101,7 @@ public class Aluno{
 		result = prime * result + ((massaCorporal == null) ? 0 : massaCorporal.hashCode());
 		result = prime * result + Float.floatToIntBits(peso);
 		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
+		result = prime * result + ((treino == null) ? 0 : treino.hashCode());
 		return result;
 	}
 
@@ -118,6 +130,11 @@ public class Aluno{
 				return false;
 		} else if (!pessoa.equals(other.pessoa))
 			return false;
+		if (treino == null) {
+			if (other.treino != null)
+				return false;
+		} else if (!treino.equals(other.treino))
+			return false;
 		return true;
 	}
 
@@ -125,19 +142,23 @@ public class Aluno{
 		super();
 	}
 
-	public Aluno(int alun_matricula, @NotNull float peso, @NotNull float altura, String massaCorporal, Pessoa pessoa) {
+	public Aluno(int alun_matricula, @NotNull(message = "Informe o peso.") float peso,
+			@NotNull(message = "Informe a altura.") float altura, String massaCorporal, Pessoa pessoa,
+			List<Treino> treino) {
 		super();
 		this.alun_matricula = alun_matricula;
 		this.peso = peso;
 		this.altura = altura;
 		this.massaCorporal = massaCorporal;
 		this.pessoa = pessoa;
+		this.treino = treino;
 	}
 
 	@Override
 	public String toString() {
 		return "Aluno [alun_matricula=" + alun_matricula + ", peso=" + peso + ", altura=" + altura + ", massaCorporal="
-				+ massaCorporal + ", pessoa=" + pessoa + "]";
+				+ massaCorporal + ", pessoa=" + pessoa + ", treino=" + treino + "]";
 	}
+
 	
 }

@@ -1,60 +1,37 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymelaf.org">
+<html 	xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org">
 	
-	<head>
-      	<!--Import Google Icon Font-->
-	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<HEAD>
+	
+		  <!--Import Google Icon Font-->
+	      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 	      
-	    <!--Import materialize.css-->
-	    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
+	      <!--Import materialize.css-->
+	      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+	      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	      <link type="text/css" rel="stylesheet" href="/materialize/css/menuresponsive.css"/>
 	
-	    <!--Let browser know website is optimized for mobile-->
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
-		<meta charset="utf-8"/>
-		<TITLE>iAcademy: Montagem de treino</TITLE>
+	      <!--Let browser know website is optimized for mobile-->
+	      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    		<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+           integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+           crossorigin="anonymous"></script>
 		
+			<meta charset="UTF-8"/>
+			<TITLE>iAcademy: Professor</TITLE>
 	</HEAD>
 	
-	<BODY class="#e3f2fd blue lighten-5">
-		 
+<body>
 
-				
-	    <!--JavaScript at end of body for optimized loading-->
-		<script type="text/javascript" src="materialize/js/materialize.js"></script>
-		<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-		
-		<div class="row"></div>
-		
-		<div class="row">
-    		<div class="col s2">
-			<div class= "left">
-				<a href="/">
-					<button class="btn" type="button" name="action">Home
-							 <i class="material-icons left #e88e">home</i>
-						</button>
-				</a>	
-			</div>
-			</div>
-			<div class="col s3">
-				<a href="/treinoAll">
-					<button class="btn waves-effect waves-light" type="submit" name="action">Treinos Cadastrados
-				 		<i class="material-icons right">feed</i>
-					</button>
-				</a>
-			</div>
-			<div class="col s10">
-			<div class= "right">
-				<a href="/logout">
-			   		<button class="btn btn-default btn-xs" type="button" name="action">
-						 <i class="material-icons right">logout</i>
-					</button>
-				</a>
-			</div>
-		</div>
-    	</div>	
-	
-		<h4 class="center-align"> Cadastro de Treino: </h4>
+   		<!--JavaScript at end of body for optimized loading-->
+		      <script type="text/javascript" src="materialize/js/materialize.js"></script>
+		      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>		      
+		      <script type="text/javascript" src="materialize/js/comportamento.js"></script>
+        
+        <select id="cadastroTreino"></select>
+        
+        <h4 class="center-align"> Cadastro de Treino: </h4>
+        
 		<div class="row">
 				
 			<form action="treinoSave" method="post" class="col s12">
@@ -65,12 +42,7 @@
 				          <label>ID-Treino: </label>
 				          <input name="treino_iden" readonly="readonly">
 				   		</div>
-				   		
-			        	<div class="input-field col s7">
-				          <input id="modalidade" type="text" class="validate" name="modalidade">
-				          <label for="modalidade">Modalidade: </label>
-				        </div>
-			       
+			        	     
 				        <div class="input-field col s4">
 				          <input id="turno" type="text" class="validate" name="turno">
 				          <label for="turno">Turno: </label>
@@ -105,9 +77,12 @@
 		
 			</div>	
 			
+			<select>
+			
+			<select id="buscaTreino"></select>
 			<div class="table-responsive{-sm|-md|-lg|-xl|-xxl}">
 	  			
-	  			<table class="table table-bordered border-primary table-responsive">
+	  			<table class="layout display responsive-table">
 					
 					<thead>
 					    <tr>
@@ -143,6 +118,21 @@
 			</table>
 									
 		</div>
-					
-	</body>
+		</select>
+		
+		
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+    <!-- Menu Toggle Script -->
+	<script>
+		$("#menu-toggle").click(function(e) {
+		    e.preventDefault();
+		    $("#wrapper").toggleClass("toggled");
+		});
+	</script>
+</body>
 </html>

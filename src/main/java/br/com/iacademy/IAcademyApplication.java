@@ -8,11 +8,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EntityScan(basePackages= {"br.com.iacademy.model"})
+@EntityScan(basePackages= {"br.com.iacademy.*"})
 @ComponentScan(basePackages= {"br.com.iacademy.*"})
-@EnableJpaRepositories(basePackages = {"br.com.iacademy.repository"})
+@EnableJpaRepositories(basePackages = {"br.com.iacademy.*"})
 @EnableTransactionManagement
-
 public class IAcademyApplication {
 
 	public static void main(String[] args) throws Exception{

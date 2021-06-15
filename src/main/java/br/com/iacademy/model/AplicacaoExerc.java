@@ -1,4 +1,4 @@
-package br.com.iacademy.model;
+/*package br.com.iacademy.model;
 
 
 import java.util.List;
@@ -13,32 +13,32 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-/*
+/ *
 @Table(name="AplicacaoExerc")
 @PrimaryKeyJoinColumn(referencedColumnName = "exerc_iden")
-@DiscriminatorValue("exerc_iden")*/
+@DiscriminatorValue("exerc_iden")* /
 public class AplicacaoExerc{
 
-	/*
+	/ *
 	public AplicacaoExerc(long exerc_iden, String exerc_nome, String exerc_descrição) {
 		super(exerc_iden, exerc_nome, exerc_descrição);
 		// TODO Auto-generated constructor stub
 	}
 	@JoinColumn(name = "exerc_iden")
-	*/
+	* /
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long aplic_iden;
 	
 	@NotNull
-	private String aplic_duracao;
+	private String aplic_duracao; 
 	
-	@NotNull
-	private String aplic_intensidade;
+	//@NotNull
+	//private String aplic_intensidade; //peso
 	
-	@NotNull
-	private int aplic_repeticoes;
+	//@NotNull
+	//private int aplic_repeticoes;
 	
 	@OneToMany
     @JoinColumn(name = "aplic_iden") // Esta coluna está na tabela "Treino".
@@ -64,7 +64,7 @@ public class AplicacaoExerc{
 		this.aplic_duracao = aplic_duracao;
 	}
 
-	public String getAplic_intensidade() {
+	/ *public String getAplic_intensidade() {
 		return aplic_intensidade;
 	}
 
@@ -78,7 +78,7 @@ public class AplicacaoExerc{
 
 	public void setAplic_repeticoes(int aplic_repeticoes) {
 		this.aplic_repeticoes = aplic_repeticoes;
-	}
+	}* /
 
 	@Override
 	public int hashCode() {
@@ -86,8 +86,8 @@ public class AplicacaoExerc{
 		int result = 1;
 		result = prime * result + ((aplic_duracao == null) ? 0 : aplic_duracao.hashCode());
 		result = prime * result + (int) (aplic_iden ^ (aplic_iden >>> 32));
-		result = prime * result + ((aplic_intensidade == null) ? 0 : aplic_intensidade.hashCode());
-		result = prime * result + aplic_repeticoes;
+		//result = prime * result + ((aplic_intensidade == null) ? 0 : aplic_intensidade.hashCode());
+		//result = prime * result + aplic_repeticoes;
 		return result;
 	}
 
@@ -107,13 +107,13 @@ public class AplicacaoExerc{
 			return false;
 		if (aplic_iden != other.aplic_iden)
 			return false;
-		if (aplic_intensidade == null) {
+		/*if (aplic_intensidade == null) {
 			if (other.aplic_intensidade != null)
 				return false;
 		} else if (!aplic_intensidade.equals(other.aplic_intensidade))
 			return false;
 		if (aplic_repeticoes != other.aplic_repeticoes)
-			return false;
+			return false;* /
 		return true;
 	}
 
@@ -125,14 +125,14 @@ public class AplicacaoExerc{
 		super();
 		this.aplic_iden = aplic_iden;
 		this.aplic_duracao = aplic_duracao;
-		this.aplic_intensidade = aplic_intensidade;
-		this.aplic_repeticoes = aplic_repeticoes;
+		//this.aplic_intensidade = aplic_intensidade;
+		//this.aplic_repeticoes = aplic_repeticoes;
 	}
 
-	@Override
-	public String toString() {
-		return "AplicacaoExerc [aplic_iden=" + aplic_iden + ", aplic_duracao=" + aplic_duracao + ", aplic_intensidade="
-				+ aplic_intensidade + ", aplic_repeticoes=" + aplic_repeticoes + "]";
-	}
+	//@Override
+	//public String toString() {
+		//return "AplicacaoExerc [aplic_iden=" + aplic_iden + ", aplic_duracao=" + aplic_duracao + ", aplic_intensidade="
+				//+ aplic_intensidade + ", aplic_repeticoes=" + aplic_repeticoes + "]";
+	//}
 	
-}
+}*/

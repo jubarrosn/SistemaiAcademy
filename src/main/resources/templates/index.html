@@ -1,105 +1,282 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<html>
-  
-	  <head>
-	  
-			<!--Import Google Icon Font-->
-	      	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	      
-	      	<!--Import materialize.css-->
-	     	 <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Sistema iAcademy</title>
+		<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
+		<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	
-	     	 <!--Let browser know website is optimized for mobile-->
-	     	 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
+		<!-- Bootstrap -->
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/estilo.css" rel="stylesheet" />
+
+</head>
+
+<body class="#e0e0e0 grey lighten-2" data-spy="scroll" data-target=".navbarmenu" data-offset="30">
 	
-			<meta charset="utf-8"/>
-			<TITLE>Sistema iAcademy</TITLE>
-		
-	</HEAD>
-	
-	<BODY class="#e0e0e0 grey lighten-2">
-		
-				
-	    	  <!--JavaScript at end of body for optimized loading-->
+	<!--JavaScript at end of body for optimized loading-->
 		      <script type="text/javascript" src="materialize/js/materialize.js"></script>
 		      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 	
-    	<div class="row"></div>
-    	
-    	<div class="row">
-    		<div class="col s2">
-			<div class= "left">
-				<a href="/">
-					<button class="btn" type="button" name="action">Home
-							 <i class="material-icons left #e88e">home</i>
-						</button>
-				</a>	
+	
+	<nav class="navbar navbar-inverse navbar-inner navbar-fixed-top #e0e0e0 grey lighten-2">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav mr-auto">
+			    <li class="nav-item active"/>
+			    <a class="nav-link" href="#"> Home <span class="sr-only"></span></a>
+			<!-- div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbarmenu">
+					<span class="sr-only"></span> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>				
+					<a class="navbar-brand" href="#home">Home</a></button>
+			</div>-->
+</ul></div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbarmenu"
+				id="navbarmenu">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="ul-fonte" href="#quemsomos">Quem Somos</a></li>
+
+					<li><a class="ul-fonte" href="#servicos">Serviços</a></li>
+					
+					<li><a class="ul-fonte" href="#localizacao">Contato</a></li>
+
+					<!--<li><a class="ul-fonte" sec:authorize="hasRole('ALUNO')"
+						href="/administracao.xhtml">Painel Administrativo</a></li>-->
+
+					<li><a class="ul-fonte" href="/login">LOGIN</a></li>
+					
+				</ul>
+
 			</div>
-			</div>
-						    		
-    		<div class="row">
-    		<div class="col s2">
-			    <a href="/cadastroPessoa">
-			    	<button class="btn waves-effect waves-light" type="button" name="action">Cad. Pessoas
-						 <i class="material-icons right">groups</i>
-					</button>
-				</a>
-			</div>
-			
-			<div class="col s2">
-			    <a href="/cadastroAluno">
-			    <button class="btn waves-effect waves-light" type="button" name="action">Cad. Alunos
-						 <i class="material-icons right">people</i>
-					</button>
-				</a>
-			</div>
-			
-			<div class="col s2">
-			    <a href="/cadastroEmpresa">
-			    <button class="btn waves-effect waves-light" type="button" name="action">Cad. Empresas
-						 <i class="material-icons right">business</i>
-					</button>
-				</a>
-			</div>
-			
-			<div class="col s2">
-			    <a href="/cadastroTreino">
-			    <button class="btn waves-effect waves-light" type="button" name="action">Cad. Treino
-						 <i class="material-icons right">fitness_center</i>
-					</button>
-				</a>
-			</div>
-			
-			<div class="col s2">
-			<div class= "right">
-				<a href="/logout">
-			   		<button class="btn btn-default btn-xs" type="button" name="action">
-						 <i class="material-icons right">logout</i>
-					</button>
-				</a>
-			</div>
-			</div>
+			<!-- /.navbar-collapse -->
 		</div>
-		</div>
-	    <div class=" center-align">
-	 		<div class="row">
-          	<div class="#e0e0e0 grey lighten-2">
-          		<br/>
-	    		<h2 class="center-align">Bem-vindo ao Sistema iAcademy</h2>
-	    		<div class="col s1"></div>
-	    		<div class="col s10">
-	    			<p class="flow-text center-align">O Sistema iAcademy conta com ferramentas para 
-	    			auxiliar na gestão de academias e proporcionar facilidades na montagem de treinos para seus alunos.</p>
-    			</div>
-    		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<!-- INICIO DA APRESENTAÇÃO-->
+	<section id="apresentacao">
+			<div class="col-md-4 hidden-xs hidden-sm d-flex align-itens-center">    
+	        <img class="responsive-img w-100 center-block text-center" src="/images/logoCompleta.jpg">
+            </div>
+	</section>
+
+	<!-- /FIM DA APRESENTAÇÃO-->
+
+	<!-- SERVIÇOS-->
+	<section id="servicos">
+		<div class="container">
+			<div class="col-xs-12 col-sm-12 col-lg-12">
+				<div class="row">
+					<div class="page-header">
+						<h1>Serviços</h1>
+					</div>
+				</div>
+				<div class="row servicos">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="col-sm-6 col-md-6 col-lg-6 pull-right">				
+	<!-- NÃO ESQUECER DE COLOCAR A FOTENHA -->	<img src="resources/imgs/servicos/Musculacao.jpg"
+								class="img-responsive img-circle" alt="professor" />
+						</div>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<h2>Plataforma Professor</h2>
+							<p class="text-left"> encher linguiça aqui depois do acesso prof</p>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="col-sm-6 col-md-6 col-lg-6">
+	<!-- NÃO ESQUECER DE COLOCAR A FOTENHA -->	<img src="resources/imgs/servicos/CrosFit.jpg"
+								class="img-responsive img-circle" alt="pagamento" />
+						</div>
+						<div class="col-sm-6 col-md-6 col-lg-6" align="right">
+							<h2>Controle de Pagamento</h2>
+							<p class="text-right">Encher linguiça aqui depois do acesso</p>
+
+						</div>
+					</div>
+					
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="col-sm-6 col-md-6 col-lg-6 pull-right">
+							<img src="resources/imgs/servicos/Musculacao.jpg"
+								class="img-responsive img-circle" alt="musculacao" />
+						</div>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<h2>Treino Online</h2>
+							<p class="text-left"> encher linguiça aqui depois do acesso prof</p>
+						</div>
+					</div>
+					
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<img src="resources/imgs/servicos/CrosFit.jpg"
+								class="img-responsive img-circle" alt="crossfit" />
+						</div>
+						<div class="col-sm-6 col-md-6 col-lg-6" align="right">
+							<h2>App</h2>
+							<p class="text-right">Encher linguiça aqui depois do acesso</p>
+						</div>
+					</div>				
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12 col-xs-12" align="center">
+<!-- colocar link do app -->					<a href="#" type="button"
+							class="btn btn-default btn-sm btn-block"
+							alt="pagina de servicos academia">
+							<p class="p-fonte-botao">DOWNLOAD APP</p>
+						</a>
+					</div>
+				</div>
+				
 			</div>
+			
+		</div>
 		
-			<div class=" center-align">
-			<img class="responsive-img" width="400" height="300" src="materialize/images/iconeLogo.jpg">
+	</section>
+
+	<!-- /FIM DO SERVIÇOS-->
+
+
+	<!-- QUEM SOMOS-->
+	<section id="quemsomos" class="div_fundo">
+		<div class="container">
+			<div class="col-xs-12 col-sm-12 col-lg-12">
+				<div class="row">
+					<div class="page-header">
+						<h1>Quem Somos</h1>
+						<p class="text-left"> Somos alunos do Centro Universitário de Goiás, onde o desenvolvimento do Sistema iAcademy foi realizado para a matéria de Projeto Final para conclusão do curso de Análise e Desenvolvimento de Sistema.</p>
+					</div>
+				</div>
 			</div>
-   		</div>
-  </body>
-  
+		</div>
+	</section>
+
+	<!-- /FIM QUEM SOMOS-->
+
+
+
+	<!-- LOCALIZAÇÃO-->
+	<section id="localizacao">
+		<div class="container">
+			<div class="col-xs-12 col-sm-12 col-lg-12">
+				<div class="row">
+					<div class="page-header">
+						<h1>Contato
+							
+						</h1>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- /FIM DA LOCALIZAÇÃO-->
+
+	<!--INICIO FOOTER -->
+	<footer>
+	
+		<div class="container">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+					<ul>
+						<li><a class="" href="#">Regras de Uso</a></li>
+						<br></br>
+						<li><a class="" href="#">Politícia de Privacidade</a></li>
+						<br></br>
+						<li><a class="" href="#">Patrocinadores</a></li>
+						<br></br>
+						<li><a class="" href="#">Aplicações e mais</a></li>
+
+					</ul>
+				</div>
+				<div class="social-buttons">
+				  <a href="https://www.facebook.com/ajuliabarros/" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+				    <span class="social-button__inner">
+				     <i class="fab fa-facebook-f"></i>
+				    </span>
+				  </a>
+				  <a href="https://www.linkedin.com/in/juliabarrosneves/" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+				    <span class="social-button__inner">
+				     <i class="fab fa-linkedin-in"></i>
+				    </span>
+				  </a>
+				  <a href="#" class="social-buttons__button social-button social-button--github" aria-label="GitHub">
+				    <span class="social-button__inner">
+				     <i class="fab fa-github"></i>
+				    </span>
+				  </a>
+				  <a href="https://www.instagram.com/jubarrosn/" class="social-buttons__button social-button social-button--instagram" aria-label="Instagram">
+				    <span class="social-button__inner">
+				     <i class="fab fa-instagram"></i>
+				    </span>
+				  </a>
+				</div>
+				<!-- <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+					<ul>
+						<li><a>Redes Socias:</a></li>
+						</br>
+						<li><a class="" href="https://www.facebook.com/ajuliabarros/">
+							<i class="fab fa-facebook-square fa-2x"></i> Facebook</a></li>
+						<li><a class="" href="https://www.instagram.com/jubarrosn/">
+							<i class="fab fa-instagram fa-2x"></i> Instagram</a></li>
+					<!--<li><a class="" href="#"><i class="fab fa-twitter fa-2x"></i>Twitter</a></li>-->
+<!-- 
+					</ul>
+				</div> -->
+				<div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+					<div class="thumbnail">
+					
+	
+	
+								
+	<!-- NÃO ESQUECER DE COLOCAR A FOTENHA --> <img src="resources/imgs/IMAGEMMINHAATUALIZARDEPOIS.jpg"
+							class="img-resposive img-rounded" />
+						<div class="caption">
+							<h4 align="center">
+								Desenvolvido por: 
+								<small>  
+									<a href="https://www.linkedin.com/in/juliabarrosneves/">Julia Barros</a> </br>
+								</small>
+							</h4>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</footer>
+
+	<!--/fim contatos -->
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/fontawesome-all.min.js"></script>
+	<!--ICONES do BOOTS -->
+	<script src="resources/js/main.js"></script>
+</body>
 </html>

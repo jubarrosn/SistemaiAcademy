@@ -1,4 +1,4 @@
-package br.com.iacademy.model;
+/*package br.com.iacademy.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -108,4 +108,4 @@ public class Esporte implements Serializable{
 				+ "]";
 	}
 		
-}
+}*/

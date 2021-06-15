@@ -1,36 +1,38 @@
 package br.com.iacademy.model;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
-/*
-@Table(name="Professor")
-@PrimaryKeyJoinColumn(referencedColumnName = "pes_iden")
-@DiscriminatorValue("pes_iden")*/
-public class Professor{
+public class Professor implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long prof_iden;
 	
-	@NotNull
+	@NotNull(message = "Informe o Registro CONFEF.")
 	private String prof_confef; //CONFEF=Conselho Federal de Educação Física
 	
-	@ManyToOne
+	@OneToOne(cascade = {CascadeType.ALL}) // Esta coluna está na tabela "Funcionário".
     @JoinColumn(name = "func_iden")
-	private Funcionario funcionario;
+    private Funcionario funcionario;
 	
-	@OneToMany
-    @JoinColumn(name = "prof_iden") // Esta coluna está na tabela "Treino".
+	@OneToMany(mappedBy = "professor", cascade = {CascadeType.ALL}) // Esta coluna está na tabela "Treino".
     private List<Treino> treino;
 	
 	public List<Treino> Treino() {

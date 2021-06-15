@@ -1,8 +1,9 @@
 package br.com.iacademy.model;
 
 public enum Turno {
+	
 	MATUTINO("Matutino"), 
-	VESPERTINIO("Vespertino"),
+	VESPERTINO("Vespertino"),
 	NOTURNO("Noturno"),
 	INTEGRAL("Integral");
 	

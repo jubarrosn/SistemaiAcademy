@@ -1,4 +1,4 @@
-package br.com.iacademy.repository;
+/*package br.com.iacademy.repository;
 
 import java.util.Optional;
 
@@ -13,7 +13,9 @@ import br.com.iacademy.model.Exercicio;
 public interface ExercicioRepository extends JpaRepository<Exercicio, Long>{
 	
 	Optional<Exercicio> findById(Long id);
+	
+	Optional<Exercicio> findByNome(String exerc_nome);
 
 	//void exercicio(long exerc_iden, String exerc_nome, String exerc_descrição);
 	
-}
+}*/
