@@ -71,13 +71,13 @@
 						</thead>
 						<tbody>
 							<tr th:each="treino : ${treinos}">														
-								<td class="container-fluid" th:text="${treino.treino_iden}"></td></br>
-								<td class="container-fluid" th:text="${treino.esportes.descricao}"></td>
-								<td class="container-fluid" th:text="${treino.exercicio.descricao}"></td>
-								<td class="container-fluid" th:text="${treino.aplicPeso.descricao}"></td>
-								<td class="container-fluid" th:text="${treino.aplicRepeticoes.descricao}"></td>
-								<td class="container-fluid" th:text="${treino.aplicSerie.descricao}"></td>	
-								<td class="container-fluid" th:text="${treino.treino_vencimento}"></td>
+								<td class="container-fluid" th:text="${treino.treino_iden}">01</td>
+								<td class="container-fluid" th:text="${treino.esportes.descricao}">Musculacao</td>
+								<td class="container-fluid" th:text="${treino.exercicio.descricao}">Haltere</td>
+								<td class="container-fluid" th:text="${treino.aplicPeso.descricao}">5Kg</td>
+								<td class="container-fluid" th:text="${treino.aplicRepeticoes.descricao}">20 Repetições</td>
+								<td class="container-fluid" th:text="${treino.aplicSerie.descricao}">5 Séries</td>	
+								<td class="container-fluid" th:text="${treino.treino_vencimento}">25/06/2021</td>
 							</tr>
 						</tbody>
 					
