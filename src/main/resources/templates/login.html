@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="pt-br" dir="ltr">
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="css/csstelalogin.css">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+		
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="../materialize/css/materialize.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="../materialize/css/csstelalogin.css"/>
+	
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<!-- Bootstrap -->
+	<link href="../resources/css/bootstrap.min.css" rel="stylesheet" />
+	
+	<meta charset = "utf-8">
+	<title>iAcademy: Login</title>
+</head>
+
+<body>
+		
+		<!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="../materialize/js/materialize.js"></script>
+      <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+      
+	<div class="login responsive">
+
+			<img src="../materialize/images/logocompleta.jpg" class="logo" width="120" height="120">
+
+			<!--<h1>Login</h1>-->
+
+			<h3>Bem-Vindo(a)</h3><br>
+			
+
+			<form th:action="@{/login}" method="post">
+				
+				<p>Usuário</p>
+				<input type="text" name="" placeholder="Insira seu CPF"></input>
+				<p>Senha</p>
+				<input type="password" name="" placeholder="Insira sua senha"></input><br>
+				<input type="submit" name="login" value="Login"></input><br>
+			
+  				<a href="#">Esqueceu sua senha?  Entre em contato com Suporte!</a><br>
+
+
+			</form>
+
+	</div>
+
+</body>
+
+</html>

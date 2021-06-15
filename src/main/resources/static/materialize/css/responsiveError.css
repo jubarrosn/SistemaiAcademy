@@ -1,0 +1,15 @@
+.responsive {
+ 	 max-width: auto;
+ 	 height: auto;
+}
+
+p{
+	max-width: auto;
+  	height: auto;
+}
+
+.texto{
+	font-style: italic;
+	font-weight: bolder;
+	font-family: black;
+}

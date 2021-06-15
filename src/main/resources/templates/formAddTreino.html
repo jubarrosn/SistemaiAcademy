@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org">
+	
+<HEAD>
+
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/styleForms.css"/>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/menuresponsive.css"/>
+ 	<!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+     <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	<!--Let browser know website is optimized for mobile-->
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	    
+	<!--Import JavaScript-->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/41fa5d1383.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	
+	<meta charset="UTF-8"/>
+	
+	<TITLE>iAcademy: Treino</TITLE>
+
+</HEAD>
+    
+<BODY>
+
+<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="/materialize/js/materialize.js"></script>
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+	
+	<!-- INICIO DE Wrapper -->
+	<div id="wrapper">
+	
+		<!-- INICIO DE Sidebar -->
+	
+		<div id="sidebar-wrapper">
+
+			<ul class="sidebar-nav">
+			
+				<li class="sidebar-brand center">
+					<a href="/homeProfessor">
+						Home
+					</a>
+				</li>
+
+				<li>
+					<a href="/formAddAlunoProf" id="#cadastroAluno">Cadastrar Aluno<i class="fas fa-id-card"></i></a>
+				</li>
+				
+				<li>
+					<a href="/formAddTreino" id="#cadastroTreino">Montar Treino<i class="fas fa-plus"></i></a>
+				</li>
+				
+				<li>
+					<a href="#" id="#buscarAluno">Pesquisar Aluno<i class="fas fa-search"></i></a>
+				</li>
+				
+				<li>
+					<a href="#" id="#buscarTreino">Pesquisar Treino<i class="fas fa-search"></i></a>
+				</li>
+				<li>
+					<div class="divider"></div>
+				</li>
+				<li>
+				    <a href="/logout" id="#logout">Sair<i class="fas fa-sign-out-alt"></i></a>
+				</li>
+				
+			</ul>
+
+		</div>
+		<!-- FIM DE /#sidebar-wrapper -->
+		
+		<!-- BOTÃO OCULTAR E EXPANDIR MENU" -->
+		
+        <a id="menu-toggle" href="#menu">
+			<span class="large material-icons black-text">menu</span>
+		</a>
+		
+		
+        <!-- INICIO DE Page Content -->
+        
+		<div class="sidenav-close" id="page-content-wrapper">
+	        <header>
+	        <a href="/homeProfessor">
+	        	<div> 
+	        		<img src="../materialize/images/iacademy.jpg" class="responsive">
+	        		<img src="../materialize/images/headerlogo.jpg" class="responsive">
+	        	</div>
+	        </a>
+	        </header>
+            <div class="container-fluid">
+
+         
+	 	<h3> Cadastro de Treino: </h3>
+	 	
+	 	<div class="divider"></div>
+	 		
+		<div class="row">
+		
+			<form class="col s12">
+			
+		 	<div class="input-field col s2">
+		          <label>ID-Treino: </label>
+		          <input name="treino_iden" disabled type="number">
+		   	</div>  
+		   	
+		   	<div class="input-field col s3">
+		          <input id="pes_sobrenome" type="text" autocomplete="off" name="pes_sobrenome">
+		          <label for="pes_sobrenome">Aluno: </label>
+		    </div>
+		    
+		    <div class="input-field col s3">
+		          <input id="pes_sobrenome" type="text" autocomplete="off" name="pes_sobrenome">
+		          <label for="pes_sobrenome">Professor Responsável: </label>
+		    </div>
+		    
+		    <div class="input-field col s2">
+		   	  <select class="browser-default">
+			    <option value="" disabled selected>Selecione esporte</option>
+			    <option value="MUSCULACAO">Musculação</option>
+				<option value="PILATES">Pilates</option>
+				<option value="LUTAS">Lutas Livres</option>
+			  </select>  
+		     </div>		
+		         
+		    <!--<div class="input-field col s2">
+		          <input id="pes_sobrenome" type="text" autocomplete="off" name="pes_sobrenome">
+		          <label for="pes_sobrenome">Exercício: </label>
+		    </div>-->
+		    
+		    <div class="input-field col s2">
+		   	  <select class="browser-default">
+			    <option value="" disabled selected>Selecione exercício</option>
+			    <option value="ESTEIRA">Esteira</option>
+				<option value="BICICLETA">Bicicleta</option>
+				<option value="SUPINO">Supino</option>
+				<option value="HALTERE">Haltere</option>
+				<option value="REMADA">Remada</option>
+				</select>  
+		      </div>
+
+		   	<div class="input-field col s2">
+		   	  <select class="browser-default">
+			    <option value="" disabled selected>Selecione peso</option>
+			    <option value="PESO1">1 Kg</option>
+				<option value="PESO2">2 kg</option>
+				<option value="PESO3">3 kg</option>
+				<option value="PESO4">4 kg</option>
+				<option value="PESO5">5 kg</option>
+				<option value="PESO6">6 kg</option>
+				<option value="PESO7">7 kg</option>
+				<option value="PESO8">8 kg</option>
+				<option value="PESO9">9 kg</option>
+				<option value="PESO10">10 kg</option>
+				<option value="PESO11">11 kg</option>
+				<option value="PESO12">12 kg</option>
+				<option value="PESO13">13 kg</option>
+				<option value="PESO14">14 kg</option>
+				<option value="PESO15">15 kg</option>
+				<option value="PESO16">16 kg</option>
+				<option value="PESO17">17 kg</option>
+				<option value="PESO18">18 kg</option>
+				<option value="PESO19">19 kg</option>
+				<option value="PESO20">20 kg</option>
+				<option value="PESO21">21 kg</option>
+				<option value="PESO22">22 kg</option>
+				<option value="PESO23">23 kg</option>
+				<option value="PESO24">24 kg</option>
+				<option value="PESO25">25 kg</option>
+				<option value="PESO26">26 kg</option>
+				<option value="PESO27">27 kg</option>
+				<option value="PESO28">28 kg</option>
+				<option value="PESO29">29 kg</option>
+				<option value="PESO30">30 kg</option>
+				<option value="PESO31">31 kg</option>
+				<option value="PESO32">32 kg</option>
+				<option value="PESO33">33 kg</option>
+				<option value="PESO34">34 kg</option>
+				<option value="PESO35">35 kg</option>
+				<option value="PESO36">36 kg</option>
+				<option value="PESO37">37 kg</option>
+				<option value="PESO38">38 kg</option>
+				<option value="PESO39">39 kg</option>
+				<option value="PESO40">40 kg</option>
+				<option value="PESO41">41 kg</option>
+				<option value="PESO42">42 kg</option>
+				<option value="PESO43">43 kg</option>
+				<option value="PESO44">44 kg</option>
+				<option value="PESO45">45 kg</option>
+				<option value="PESO46">46 kg</option>
+				<option value="PESO47">47 kg</option>
+				<option value="PESO48">48 kg</option>
+				<option value="PESO49">49 kg</option>
+				<option value="PESO50">50 kg</option>
+				<option value="PESO51">51 kg</option>
+				<option value="PESO52">52 kg</option>
+				<option value="PESO53">53 kg</option>
+				<option value="PESO54">54 kg</option>
+				<option value="PESO55">55 kg</option>
+				<option value="PESO56">56 kg</option>
+				<option value="PESO57">57 kg</option>
+				<option value="PESO58">58 kg</option>
+				<option value="PESO59">59 kg</option>
+				<option value="PESO60">60 kg</option>
+				<option value="PESO61">61 kg</option>
+				<option value="PESO62">62 kg</option>
+				<option value="PESO63">63 kg</option>
+				<option value="PESO64">64 kg</option>
+				<option value="PESO65">65 kg</option>
+				<option value="PESO66">66 kg</option>
+				<option value="PESO67">67 kg</option>
+				<option value="PESO68">68 kg</option>
+				<option value="PESO69">69 kg</option>
+				<option value="PESO70">70 kg</option>
+				<option value="PESO71">71 kg</option>
+				<option value="PESO72">72 kg</option>
+				<option value="PESO73">73 kg</option>
+				<option value="PESO74">74 kg</option>
+				<option value="PESO75">75 kg</option>
+				<option value="PESO76">76 kg</option>
+				<option value="PESO77">77 kg</option>
+				<option value="PESO78">78 kg</option>
+				<option value="PESO79">79 kg</option>
+				<option value="PESO80">80 kg</option>
+				<option value="PESO81">81 kg</option>
+				<option value="PESO82">82 kg</option>
+				<option value="PESO83">83 kg</option>
+				<option value="PESO84">84 kg</option>
+				<option value="PESO85">85 kg</option>
+				<option value="PESO86">86 kg</option>
+				<option value="PESO87">87 kg</option>
+				<option value="PESO88">88 kg</option>
+				<option value="PESO89">89 kg</option>
+				<option value="PESO90">90 kg</option>
+				<option value="PESO91">91 kg</option>
+				<option value="PESO92">92 kg</option>
+				<option value="PESO93">93 kg</option>
+				<option value="PESO94">94 kg</option>
+				<option value="PESO95">95 kg</option>
+				<option value="PESO96">96 kg</option>
+				<option value="PESO97">97 kg</option>
+				<option value="PESO98">98 kg</option>
+				<option value="PESO99">99 kg</option>
+				<option value="PESO100">100 kg</option>
+			  </select>  
+		      </div>
+		      
+		     <div class="input-field col s2"> 
+			  <select class="browser-default">
+			    <option value="" disabled selected>Selecione série</option>
+			    <option value="SERIE1">1 série</option>
+				<option value="SERIE2">2 séries</option>
+				<option value="SERIE3">3 séries</option>
+				<option value="SERIE4">4 séries</option>
+				<option value="SERIE5">5 séries</option>
+				<option value="SERIE6">6 séries</option>
+				<option value="SERIE7">7 séries</option>
+				<option value="SERIE8">8 séries</option>
+				<option value="SERIE9">9 séries</option>
+				<option value="SERIE10">10 séries</option>
+				<option value="SERIE11">11 séries</option>
+				<option value="SERIE12">12 séries</option>
+				<option value="SERIE13">13 séries</option>
+				<option value="SERIE14">14 séries</option>
+				<option value="SERIE15">15 séries</option>
+		    </select>  
+		    </div>
+		   
+		     <div class="input-field col s2">
+		           <input id="treino_data_inicial" autocomplete="off" type="text" class="datepicker" name="pes_data_nasc">
+		         <label for="treino_data_inicial">Data inicial: </label>
+		    </div>
+		        
+		    <div class="input-field col s2">
+		         <input id="treino_vencimento" autocomplete="off" type="text" class="datepicker" name="pes_data_nasc">
+		         <label for="treino_vencimento">Data final: </label>
+		    </div>
+		     <div class="input-field col s2"></div>
+		    <div class="input-field col s2"></div>
+		    <div class="input-field col s2">
+			  <select class="browser-default">
+			    <option value="" disabled selected>Selecione repetição</option>
+			    <option value="REPETIR1">1 Repetição</option>
+				<option value="REPETIR2">2 Repetições</option>
+				<option value="REPETIR3">3 Repetições</option>
+				<option value="REPETIR4">4 Repetições</option>
+				<option value="REPETIR5">5 Repetições</option>
+				<option value="REPETIR6">6 Repetições</option>
+				<option value="REPETIR7">7 Repetições</option>
+				<option value="REPETIR8">8 Repetições</option>
+				<option value="REPETIR9">9 Repetições</option>
+				<option value="REPETIR10">10 Repetições</option>
+				<option value="REPETIR11">11 Repetições</option>
+				<option value="REPETIR12">12 Repetições</option>
+				<option value="REPETIR13">13 Repetições</option>
+				<option value="REPETIR14">14 Repetições</option>
+				<option value="REPETIR15">15 Repetições</option>
+				<option value="REPETIR16">16 Repetições</option>
+				<option value="REPETIR17">17 Repetições</option>
+				<option value="REPETIR18">18 Repetições</option>
+				<option value="REPETIR19">19 Repetições</option>
+				<option value="REPETIR20">20 Repetições</option>
+				<option value="REPETIR21">21 Repetições</option>
+				<option value="REPETIR22">22 Repetições</option>
+				<option value="REPETIR23">23 Repetições</option>
+				<option value="REPETIR24">24 Repetições</option>
+				<option value="REPETIR25">25 Repetições</option>
+				<option value="REPETIR26">26 Repetições</option>
+				<option value="REPETIR27">27 Repetições</option>
+				<option value="REPETIR28">28 Repetições</option>
+				<option value="REPETIR29">29 Repetições</option>
+				<option value="REPETIR30">30 Repetições</option>
+				<option value="REPETIR31">31 Repetições</option>
+				<option value="REPETIR32">32 Repetições</option>
+				<option value="REPETIR33">33 Repetições</option>
+				<option value="REPETIR34">34 Repetições</option>
+				<option value="REPETIR35">35 Repetições</option>
+				<option value="REPETIR36">36 Repetições</option>
+				<option value="REPETIR37">37 Repetições</option>
+				<option value="REPETIR38">38 Repetições</option>
+				<option value="REPETIR39">39 Repetições</option>
+				<option value="REPETIR40">40 Repetições</option>
+				<option value="REPETIR41">41 Repetições</option>
+				<option value="REPETIR42">42 Repetições</option>
+				<option value="REPETIR43">43 Repetições</option>
+				<option value="REPETIR44">44 Repetições</option>
+				<option value="REPETIR45">45 Repetições</option>
+				<option value="REPETIR46">46 Repetições</option>
+				<option value="REPETIR47">47 Repetições</option>
+				<option value="REPETIR48">48 Repetições</option>
+				<option value="REPETIR49">49 Repetições</option>
+				<option value="REPETIR50">50 Repetições</option>
+				<option value="REPETIR51">51 Repetições</option>
+				<option value="REPETIR52">52 Repetições</option>
+				<option value="REPETIR53">53 Repetições</option>
+				<option value="REPETIR54">54 Repetições</option>
+				<option value="REPETIR55">55 Repetições</option>
+				<option value="REPETIR56">56 Repetições</option>
+				<option value="REPETIR57">57 Repetições</option>
+				<option value="REPETIR58">58 Repetições</option>
+				<option value="REPETIR59">59 Repetições</option>
+				<option value="REPETIR60">60 Repetições</option>
+				<option value="REPETIR61">61 Repetições</option>
+				<option value="REPETIR62">62 Repetições</option>
+				<option value="REPETIR63">63 Repetições</option>
+				<option value="REPETIR64">64 Repetições</option>
+				<option value="REPETIR65">65 Repetições</option>
+				<option value="REPETIR66">66 Repetições</option>
+				<option value="REPETIR67">67 Repetições</option>
+				<option value="REPETIR68">68 Repetições</option>
+				<option value="REPETIR69">69 Repetições</option>
+				<option value="REPETIR70">70 Repetições</option>
+				<option value="REPETIR71">71 Repetições</option>
+				<option value="REPETIR72">72 Repetições</option>
+				<option value="REPETIR73">73 Repetições</option>
+				<option value="REPETIR74">74 Repetições</option>
+				<option value="REPETIR75">75 Repetições</option>
+				<option value="REPETIR76">76 Repetições</option>
+				<option value="REPETIR77">77 Repetições</option>
+				<option value="REPETIR78">78 Repetições</option>
+				<option value="REPETIR79">79 Repetições</option>
+				<option value="REPETIR80">80 Repetições</option>
+				<option value="REPETIR81">81 Repetições</option>
+				<option value="REPETIR82">82 Repetições</option>
+				<option value="REPETIR83">83 Repetições</option>
+				<option value="REPETIR84">84 Repetições</option>
+				<option value="REPETIR85">85 Repetições</option>
+				<option value="REPETIR86">86 Repetições</option>
+				<option value="REPETIR87">87 Repetições</option>
+				<option value="REPETIR88">88 Repetições</option>
+				<option value="REPETIR89">89 Repetições</option>
+				<option value="REPETIR90">90 Repetições</option>
+				<option value="REPETIR91">91 Repetições</option>
+				<option value="REPETIR92">92 Repetições</option>
+				<option value="REPETIR93">93 Repetições</option>
+				<option value="REPETIR94">94 Repetições</option>
+				<option value="REPETIR95">95 Repetições</option>
+				<option value="REPETIR96">96 Repetições</option>
+				<option value="REPETIR97">97 Repetições</option>
+				<option value="REPETIR98">98 Repetições</option>
+				<option value="REPETIR99">99 Repetições</option>
+				<option value="REPETIR100">100 Repetições</option>
+			  </select>  
+		    </div>
+		    
+		     <div class="input-field col s2">
+		   	  <select class="browser-default">
+			    <option value="" disabled selected>Selecione um turno</option>
+			    <option value="MATUTINO">Matutino</option>
+				<option value="VESPERTINO">Vespertino</option>
+				<option value="NOTURNO">Noturno</option>
+				<option value="INTEGRAL">Integral</option>  
+		      </select>
+		     </div>
+		     
+		   
+		    </div>
+			<div class="row">
+			
+				<div class="input-field col s10">							
+					<button action="treinoSave" method="POST" met class="btn waves-effect waves-light right" type="submit" name="action">Salvar
+						<i class="material-icons right">save</i>
+					</button>
+				</div>
+					
+				</form>	
+								
+				<div class="input-field col s2">
+					<a href="/homeProfessor">						
+					<button class="btn waves-effect waves-light left" type="button"  onClick="Cancel()">Cancelar
+						<i class="material-icons rigth">cancel</i>
+					</button>
+					</a>
+				</div>			
+			  <!-- 
+			  	<div class="col s3">
+				<a href="/treinoAll">
+					<button class="btn waves-effect waves-light" type="submit" name="action">Treinos Cadastrados
+				 		<i class="material-icons right">fit</i>
+					</button>
+				</a>
+			</div>-->
+			  	
+			  	
+		 </div>
+				
+		</div>      
+		      
+	<script> 
+	
+		$(document).ready(function(){
+		    $('select').formSelect();
+		  });
+		
+		$(document).ready(function(){
+		    $('.datepicker').datepicker()
+		});
+	  function Cancel(){
+		  	location.href= "homeProfessor"
+		  };
+	 
+	 
+	 </script>	
+	 
+</BODY>
+
+</html>

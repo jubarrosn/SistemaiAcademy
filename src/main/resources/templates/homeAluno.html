@@ -1,0 +1,71 @@
+<html 	xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org">
+	
+	<HEAD>
+	
+		  <!--Import Google Icon Font-->
+	      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	      
+	      <!--Import materialize.css-->
+	      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+	      <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	      <link type="text/css" rel="stylesheet" href="/materialize/css/csshomeAluno.css"/>
+	
+	      <!--Let browser know website is optimized for mobile-->
+	      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    		<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+           integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+           crossorigin="anonymous"></script>
+		
+			<meta charset="UTF-8"/>
+			<TITLE>Sistema iAcademy</TITLE>
+	</HEAD>
+		
+	<body>
+
+		<div class="left">
+			<img src="../materialize/images/iacademy.jpg" class="responsive">
+	        <img src="../materialize/images/headerlogo.jpg" class="responsive">
+	        </div>
+			<!--<div class="center">
+			<h5>Bem-vindo </h5>
+		</div>-->
+	 
+
+	    
+	   	
+	   	
+		    <div class="table-responsive{-sm|-md|-lg|-xl|-xxl}">
+	
+		  			<table class="layout display responsive-table col s12">
+						
+						<thead>
+						    <tr>						      					      
+						     	<th class="container-fluid" scope="col">Exercício</th></br>
+								<th class="container-fluid" scope="col">Descrição</th>
+								<th class="container-fluid" scope="col">Peso</th>	
+						   		<th class="container-fluid" scope="col">Repetições</th>
+						   		<th class="container-fluid" scope="col">Série</th>					      
+						   		<th class="container-fluid" scope="col">Data Inicial</th>
+						   		<th class="container-fluid" scope="col">Vencimento</th>
+						</thead>
+						<tbody>
+							<tr th:each="treino : ${treinos}">														
+								<td class="container-fluid" th:text="${treino.treino_iden}"></td></br>
+								<td class="container-fluid" th:text="${exerc_nome}"></td>
+								<td class="container-fluid" th:text="${treino.exerc_descricao}"></td>
+								<td class="container-fluid" th:text="${treino.aplicPeso}"></td>
+								<td class="container-fluid" th:text="${treino.aplicRepeticoes}"></td>
+								<td class="container-fluid" th:text="${treino.aplicSerie}"></td>
+							<tr th:each="treino : ${treinos}">		
+								<td class="container-fluid" th:text="${treino.treino_data_inicial}"></td>
+								<td class="container-fluid" th:text="${treino.treino_vencimento}"></td>
+						</tbody>
+					
+					</table> 
+		    </div>
+		    
+	    </div>
+	    
+	</body>
+</html>

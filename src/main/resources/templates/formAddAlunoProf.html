@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org">
+	
+<HEAD>
+
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/styleForms.css"/>
+ 	<!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+     <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	<!--Let browser know website is optimized for mobile-->
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	    
+	<!--Import JavaScript-->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/41fa5d1383.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	
+	<meta charset="UTF-8"/>
+	
+	<TITLE>iAcademy: Aluno</TITLE>
+
+</HEAD>
+    
+<BODY>
+	
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="/materialize/js/materialize.js"></script>
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+	
+	<div class="sidenav-close" id="page-content-wrapper">
+	
+	     <header>
+	        <div> 
+	        	<a href="/homeProfessor"><img src="../materialize/images/iacademy.jpg" class="responsive">
+	        	<img src="../materialize/images/headerlogo.jpg" class="responsive"></a>
+	        </div>
+	     </header>
+	     
+         <div class="container-fluid">
+         
+	 	<h3 class="center"> Cadastro de Aluno </h3>
+	 	
+	 	<div class="divider"></div>
+	 		
+		<div class="row">
+		
+			<form class="col s12" method="POST" th:object="${aluno}">
+				
+				<div class="input-field col s1">
+		          <label>ID-Pessoa </label>
+		          <input name="pes_iden" disabled autocomplete="off" type="number">
+		   		</div>
+		   		
+		   		<div class="input-field col s1">
+		          <label>ID-Matricula </label>
+		          <input name="alun_matricula" disabled autocomplete="off" type="number">
+		   		</div>
+		        
+		        <div class="input-field col s3">
+		          <input id="pes_prim_nome" autocomplete="off" type="text">
+		          <label for="pes_prim_nome">Primeiro Nome </label>
+		        </div>
+		
+		        <div class="input-field col s5">
+		          <input id="pes_sobrenome" type="text" autocomplete="off" name="pes_sobrenome">
+		          <label for="pes_sobrenome">Sobrenome </label>
+		        </div>
+	     			
+				<div class="input-field col s2">
+		          <input id="pes_data_nasc" type="text" class="datepicker" autocomplete="off" name="pes_data_nasc">
+		          <label for="pes_data_nasc">Data de Nascimento </label>
+		        </div>
+		        
+		        <label for="sexo" class="control-label">Sexo</label>
+				<div class="row obrigatorio">
+			        <div class="input-field col s1">		        
+			          <label class="control-label" >
+				        <input name="sexo" id="sexo" autocomplete="off" type="radio" checked itemValue="#{FEMININO}"/>
+				        <span>Feminino</span>
+				      </label>
+				     </div>
+				     <div class="input-field col s1">
+				      <label class="control-label" >
+				        <input name="sexo" id="sexo" autocomplete="off" type="radio" checked itemValue="#{MASCULINO}"/>
+				        <span>Masculino</span>
+				      </label>	
+				      </div>
+				      <div class="input-field col s2">
+				      <label class="control-label" >
+				        <input name="sexo" id="sexo" autocomplete="off" type="radio" checked itemValue="#{NAODEFINIDO}"/>
+				        <span>Não definido</span>
+				      </label>		      
+			        </div>
+				
+				<div class="input-field col s2">
+		          <input id="pes_naturalidade" type="text" autocomplete="off" name="pes_naturalidade">
+		          <label for="pes_naturalidade">Naturalidade </label>
+		        </div>
+	
+				<div class="input-field col s2">
+		          <input id="pes_nacionalidade" type="text" autocomplete="off" name="pes_nacionalidade">
+		          <label for="pes_nacionalidade">Nacionalidade </label>
+		        </div>
+				
+				<div class="input-field col s2">
+		          <input data-length="11" id="pes_cpf" type="number" autocomplete="off" class="validate" name="pes_cpf" placeholder="Digite somente números">
+		          <label  for="pes_cpf">CPF </label>
+		        <span class="helper-text" data-error="CPF inválido" data-success="CPF válido!"></span>
+		        </div>
+		        
+		        <div class="input-field col s2">
+		          <input id="pes_telefone" type="number" name="pes_telefone" autocomplete="off" class="validate" placeholder="Digite somente números">
+		          <label for="pes_telefone">Telefone </label>
+		        </div>
+				</div>
+				<div class="input-field col s2">
+		          <input id="pes_rg" type="number" class="validate" autocomplete="off" name="pes_rg" placeholder="Digite somente números">
+		          <label for="pes_rg">RG </label>
+		        </div>
+	
+				<div class="input-field col s2">
+		          <input id="pes_rg_emissao" autocomplete="off" type="text" class="datepicker" name="pes_rg_emissao">
+		          <label for="pes_rg_emissao">Data de emissão RG </label>
+		        </div>
+
+				
+				<div class="input-field col s8">
+		          <input id="pes_endereco" type="text"  autocomplete="off" name="pes_endereco">
+		          <label for="pes_endereco">Endereço </label>
+		        </div>
+							
+				<div class="input-field col s2">
+		          <input id="peso" type="number" autocomplete="off" name="peso" placeholder="Digite somente números">
+		          <label for="peso">Peso </label>
+		        </div>
+		        
+		        <div class="input-field col s2">
+		          <input id="altura" type="number" autocomplete="off" name="altura" placeholder="Digite somente números">
+		          <label for="altura">Altura </label>
+		        </div>
+		        
+		        <div class="input-field col s2 center">
+		        <a class="waves-effect waves-light btn" onclick="calculoImc()">IMC</a>
+		        </div>
+		        
+		        <div class="input-field col s2">
+		          <input id="massaCorporal" type="text" name="massaCorporal" placeholder="Digite somente números">
+		          <label for="massaCorporal">Massa Corporal-IMC </label>
+		        </div>
+				
+				<div class="input-field col s12">
+		          <input id="pes_orient_medic" type="text" autocomplete="off" name="pes_orient_medic">
+		          <label for="pes_orient_medic">Orientação Médica </label>
+		        </div>
+		        
+				<div class="row">
+				<div class="input-field col s10">							
+					<button action="alunoSave" method="POST" met class="btn waves-effect waves-light right" type="submit" name="action">Salvar
+						<i class="material-icons right">save</i>
+					</button>
+				</div>
+					
+				</form>	
+								
+				<div class="input-field col s2">
+					<a href="/homeProfessor">						
+					<button class="btn waves-effect waves-light left" type="button"  onClick="Cancel()">Cancelar
+						<i class="material-icons rigth">cancel</i>
+					</button>
+					</a>
+				</div>
+
+			</div>
+		
+		</div>
+		
+	</div>
+	
+	<script>
+	
+	$(document).ready(function(){
+		    $('.datepicker').datepicker()
+	  	});
+	  
+	  function Cancel(){
+		  	location.href= "homeProfessor"
+		  };
+		  
+	  function calculoImc(){
+			
+	        var altura = document.getElementById("altura").value;
+	        var peso = document.getElementById("peso").value;
+	        var massaCorporal = document.getElementById("massaCorporal");
+	        var quadrado = (altura * altura);
+	        var calculo = (peso/quadrado);
+	        
+	        calculo = calculo.toFixed(2); 
+
+	        var texto = "";
+
+	        if(calculo<18.5){
+	     	   texto = "Você está abaixo do seu peso ideal!";
+	       	 }
+	        	else if(calculo>=18.5 && calculo<24.9){ 
+	     			   texto = "Você está em seu peso normal!";
+	        		}
+	       			 else if(calculo>=25 && calculo<29.9) {
+	       					 texto = "Acima do peso normal!";
+	        			}
+	       				 else if(calculo>=30 && calculo<39.9) {
+	       							 texto = "Obsidade!";
+	        				}
+	       						 else {
+	      								  texto = "Obsidade Mórbida";
+									}
+	        
+	        document.getElementById(massaCorporal).innerHTML = texto;
+	    };
+	  
+	</script>
+
+</BODY>
+
+</html>

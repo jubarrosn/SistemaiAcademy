@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org">
+	
+<HEAD>
+
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/styleForms.css"/>
+ 	<!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+     <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	<!--Let browser know website is optimized for mobile-->
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	    
+	<!--Import JavaScript-->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/41fa5d1383.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	
+	<meta charset="UTF-8"/>
+	
+	<TITLE>iAcademy: Empresas</TITLE>
+
+</HEAD>
+    
+<BODY>
+	
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="/materialize/js/materialize.js"></script>
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+	
+	<div class="sidenav-close" id="page-content-wrapper">
+	
+	     <header>
+	        <div> 
+	        	<a href="/homeAdm"><img src="../materialize/images/iacademy.jpg" class="responsive">
+	        	<img src="../materialize/images/headerlogo.jpg" class="responsive"></a>
+	        </div>
+	     </header>
+	     
+			<!-- Body util -->     
+         <div class="container-fluid">
+         
+    		<table>
+    		
+    		<tr th:each = "empresa : ${empresas}">
+    			
+    			<td  th:each = "${empresa.empr_iden}"></td>
+    			<td  th:number = "${empresa.empr_cnpj}"></td>
+    			<td  th:number = "${empresa.empr_contato}"></td>
+    			<td  th:text = "${empresa.empr_razao_soc}"></td>
+    			<td  th:text = "${empresa.empr_nome_fant}"></td>
+    			<td  th:text = "${empresa.empr_endereco}"></td>
+    		
+    		</tr>
+    		
+    		</table>
+    
+    
+    
+    
+    
+         
+         </div>
+         
+     </div>
+     
+     
+    
+   
+</Body>
+</html>

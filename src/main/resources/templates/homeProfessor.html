@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org">
+	
+<HEAD>
+
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/menuresponsive.css"/>
+	
+	<!--Let browser know website is optimized for mobile-->
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	    
+	<!--Import JavaScript-->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/41fa5d1383.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	
+	<meta charset="UTF-8"/>
+	
+	<TITLE>iAcademy: Professor</TITLE>
+
+</HEAD>
+    
+<BODY>
+	<!-- INICIO DE Wrapper -->
+	<div id="wrapper">
+	
+		<!-- INICIO DE Sidebar -->
+	
+		<div id="sidebar-wrapper">
+
+			<ul class="sidebar-nav">
+			
+				<li class="sidebar-brand center">
+					<a href="#">
+						Bem-vindo(a)!
+					</a>
+				</li>
+
+				<li>
+					<a href="/formAddAlunoProf" id="#cadastroAluno">Cadastrar Aluno<i class="fas fa-id-card"></i></a>
+				</li>
+				
+				<li>
+					<a href="/formAddTreino" id="#cadastroTreino">Montar Treino<i class="fas fa-plus"></i></a>
+				</li>
+				
+				<li>
+					<a href="/buscarAluno" id="#buscarAluno">Pesquisar Aluno<i class="fas fa-search"></i></a>
+				</li>
+				
+				<li>
+					<a href="/buscarTreino" id="#buscarTreino">Pesquisar Treino<i class="fas fa-search"></i></a>
+				</li>
+				<li>
+					<div class="divider"></div>
+				</li>
+				<li>
+				    <a href="/logout" id="#logout">Sair<i class="fas fa-sign-out-alt"></i></a>
+				</li>
+				
+			</ul>
+
+		</div>
+		<!-- FIM DE /#sidebar-wrapper -->
+		
+		<!-- BOTÃO OCULTAR E EXPANDIR MENU" -->
+		
+        <a id="menu-toggle" href="#menu">
+			<span class="large material-icons black-text">menu</span>
+		</a>
+		
+		
+        <!-- INICIO DE Page Content -->
+        
+		<div class="sidenav-close" id="page-content-wrapper">
+	        <header>
+	        	<div> 
+	        		<img src="../materialize/images/iacademy.jpg" class="responsive">
+	        		<img src="../materialize/images/headerlogo.jpg" class="responsive">
+	        	</div>
+	        </header>
+            <div class="container-fluid">
+
+				<div class="row">
+					<div class="col s2 m6">	
+    					
+    					<a href="/buscarTreino">
+    						<div class="card-panel center">
+	     						<div class="card-image">
+								    <img src="../materialize/images/academia.jpg">
+								        <p><h4>Atualizar Treinos</h4></p>
+							        </div>
+							</div>
+						</a>
+						<a href="/formAddTreino">
+							<div class="card-panel center">						    
+	     						<div class="card-image">
+								    <img src="../materialize/images/montagemTreino.jpg">
+								        <p><h4>Montar Treino</h4></p>
+							    </div>
+							</div>
+						</a>
+					</div>
+						<div class="col s2 m6">	
+    							<a href="/formAddAlunoProf">
+    								<div class="card-panel center">
+						        		<div class="card-image">
+									        <img src="../materialize/images/cadastroAluno.jpg">
+									        <p><h4>Cadastrar Aluno</h4></p>
+								        </div>
+								    </div>
+								</a>
+						   	 	<a href="/buscarAluno">
+						   	 		<div class="card-panel center">
+						        		<div class="card-image">
+									        <img src="../materialize/images/pesquisarAluno.jpg">
+									        <p><h4>Buscar Aluno</h4></p>
+								        </div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+	            </div>
+	        </div> 
+        <!-- FIM DE /#page-content-wrapper -->
+
+    	</div>
+		
+		<!-- FIM DE /#wrapper -->
+    	
+    	<!-- FORMULÁRIOS SERÃO INSERIDOS AQUI-->
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+		<!-- /FORMULÁRIOS -->
+
+		<!-- Menu Toggle Script -->
+		<script>
+		
+		$("#menu-toggle").click(function(e) {
+		    e.preventDefault();
+		    $("#wrapper").toggleClass("toggled");
+		});
+			
+		/* $(document).ready(function(){
+		    $('#cadastroAluno').modal({
+		    	dismissible: true
+		    });
+		  }); */
+			
+			
+		</script>
+		
+</BODY>
+
+</html>
