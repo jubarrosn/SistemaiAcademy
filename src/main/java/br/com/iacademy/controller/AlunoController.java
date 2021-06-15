@@ -45,6 +45,21 @@ public class AlunoController {
 		Aluno aluno = new Aluno();
 		Pessoa pessoa = new Pessoa();
 		
+		pessoa.setPes_cpf(aluno.getPessoa().getPes_cpf());
+		pessoa.setPes_prim_nome(aluno.getPessoa().getPes_prim_nome());
+		pessoa.setPes_sobrenome(aluno.getPessoa().getPes_sobrenome());
+		pessoa.setPes_data_nasc(aluno.getPessoa().getPes_data_nasc());
+		pessoa.setPes_endereco(aluno.getPessoa().getPes_endereco());
+		pessoa.setPes_rg(aluno.getPessoa().getPes_rg());
+		pessoa.setPes_rg_emissao(aluno.getPessoa().getPes_rg_emissao());
+		pessoa.setPes_nacionalidade(aluno.getPessoa().getPes_nacionalidade());
+		pessoa.setPes_naturalidade(aluno.getPessoa().getPes_naturalidade());
+		pessoa.setPes_orient_medic(aluno.getPessoa().getPes_orient_medic());
+		pessoa.setPes_telefone(aluno.getPessoa().getPes_telefone());
+		pessoa.setSexo(aluno.getPessoa().getSexo());
+		aluno.setAltura(aluno.getAltura());
+		aluno.setMassaCorporal(aluno.getMassaCorporal());
+		aluno.setPeso(aluno.getPeso());
 		
 		alunoRepository.save(aluno);
 		pessoaRepository.save(pessoa);

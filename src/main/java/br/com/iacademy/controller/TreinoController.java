@@ -1,23 +1,21 @@
 package br.com.iacademy.controller;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.iacademy.model.Aluno;
-import br.com.iacademy.model.AplicPeso;
-import br.com.iacademy.model.AplicRepeticoes;
-import br.com.iacademy.model.AplicSerie;
-import br.com.iacademy.model.Esportes;
-import br.com.iacademy.model.Exercicios;
-import br.com.iacademy.model.Professor;
 import br.com.iacademy.model.Treino;
-import br.com.iacademy.model.Turno;
 import br.com.iacademy.repository.AlunoRepository;
 import br.com.iacademy.repository.ProfessorRepository;
 import br.com.iacademy.repository.TreinoRepository;
@@ -28,14 +26,99 @@ public class TreinoController {
 
 	@Autowired
 	TreinoRepository treinoRepository;
-		
+	
 	@Autowired
 	ProfessorRepository professorRepository;
 	
 	@Autowired
 	AlunoRepository alunoRepository;
 	
-	@PostMapping(value="/formAddTreino")
+	
+	//SALVAR
+	@PostMapping(value = "**/saveTreino")
+	@ResponseBody
+	public ResponseEntity<Treino> saveTreino (@RequestBody Treino treino) {
+	
+		treinoRepository.save(treino);
+		
+		return new ResponseEntity<Treino>(treino, HttpStatus.CREATED);
+		
+	}
+	
+	//DELETAR
+	
+	@DeleteMapping(value = "delete")
+	@ResponseBody
+	public ResponseEntity<String> deleteTreino(@RequestParam Long treino_iden){
+		
+		treinoRepository.deleteById(treino_iden);
+		
+		return new ResponseEntity<String>("Treino deletado com sucesso", HttpStatus.OK);
+		
+		
+	}
+	
+	
+	//ATULIZAR
+	
+	
+	
+	
+	
+	
+	
+	
+	// BUSCAS
+	@GetMapping(value= "/buscarTreino")
+	public ModelAndView listar() {
+		
+		ModelAndView andView = new ModelAndView("buscarTreino");
+		
+		Iterable<Treino> treinosIt = treinoRepository.findAll();
+		
+		andView.addObject("treinos", treinosIt);
+	
+		andView.addObject("treinoobj", new Treino());
+		
+		return andView;
+	}
+	
+	@GetMapping(value = "listaTreino")
+	@ResponseBody
+	public ResponseEntity<List<Treino>> listaTreino() {
+	
+		List<Treino> treinos = treinoRepository.findAll();
+		
+		return new ResponseEntity<List<Treino>>(treinos, HttpStatus.OK);
+	
+	}
+	
+	/*@GetMapping(value = "buscaPrimeiroNome")
+	@ResponseBody
+	public ResponseEntity<List<Treino>> buscaPrimeiroNome (@RequestParam(name = "pes_prim_nome") String pes_prim_nome) {
+		
+		List<Treino> treino = treinoRepository.buscaPrimeiroNome(pes_prim_nome);
+		
+		
+		return new ResponseEntity<List<Treino>>(treino, HttpStatus.OK);
+		
+	}
+	
+	@GetMapping(value = "buscaMatricula")
+	@ResponseBody
+	public ResponseEntity<List<Treino>> buscaMatricula (@RequestParam(name = "alun_matricula") Integer alun_matricula) {
+		
+		List<Treino> treino = treinoRepository.buscaMatricula(alun_matricula);
+		
+		
+		return new ResponseEntity<List<Treino>>(treino, HttpStatus.OK);
+		
+	}
+	
+	
+	
+	
+	/*@PostMapping(value="/formAddTreino")
 	public ModelAndView inicio() {
 		
 		ModelAndView modelAndView = new ModelAndView("/formAddTreino");
@@ -48,7 +131,7 @@ public class TreinoController {
 	
 	
 	@SuppressWarnings("unused")
-	@PostMapping(value="**/treinoSave")
+	@PostMapping(value="** /treinoSave")
 	public ModelAndView salvar(Treino treino, Professor professor, Aluno aluno, Esportes esportes, Exercicios exercicios, AplicPeso aplicPeso, AplicRepeticoes aplicRepeticoes, AplicSerie aplicSerie, Turno turno, ModelAndView andView) {
 		
 		Treino treino1 = new Treino();
@@ -123,7 +206,7 @@ public class TreinoController {
     	treino.aplicacaoExerc.setAplicacaoExerc(newTreino.getAplicacaoExerc(descricao));
     	treino.turno.setTurno(newTreino.getTurno(descricao));
     	treino.setTreino_data_inicial(newTreino.getTreino_data_inicial());
-    	treino.setTreino_vencimento(newTreino.getTreino_vencimento());   	*/
+    	treino.setTreino_vencimento(newTreino.getTreino_vencimento());   	* /
 		 ///////////////////////////////////////////////////////////////////////////////////
 		
 		Iterable<Treino> treinosIt = treinoRepository.findAll();
