@@ -1,4 +1,4 @@
-/*package br.com.iacademy.model;
+package br.com.iacademy.model;
 
 import java.io.Serializable;
 
@@ -11,9 +11,9 @@ import javax.persistence.Id;
 @Entity
 public class Usuario  implements Serializable{
 
-    /**
+    /*
 	 * 
-	 * /
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,9 +23,9 @@ public class Usuario  implements Serializable{
     @Column(unique = true)
     private String role;
 
-    //@OneToMany
-    //@JoinColumn(name = "pes_iden")
-    //private Collection<Pessoa> pessoa;
+    @OneToMany
+    @JoinColumn(name = "pes_iden")
+    private Collection<Pessoa> pessoa;
 
     public Usuario() {
 
@@ -64,4 +64,4 @@ public class Usuario  implements Serializable{
 		// TODO Auto-generated method stub
 		return null;
 	}
-}*/
+}
