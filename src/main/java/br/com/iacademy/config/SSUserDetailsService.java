@@ -1,4 +1,4 @@
-/*package br.com.iacademy.config;
+package br.com.iacademy.config;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -41,7 +41,7 @@ public class SSUserDetailsService implements UserDetailsService {
 				
 				/**
 				 * 
-				 * /
+				 */
 				private static final long serialVersionUID = 1L;
 
 				@Override
@@ -112,4 +112,3 @@ public class SSUserDetailsService implements UserDetailsService {
 		return null;
 	}
 }
-*/
