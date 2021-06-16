@@ -1,4 +1,4 @@
-/*package br.com.iacademy.model;
+package br.com.iacademy.model;
 
 import java.io.Serializable;
 
@@ -27,6 +27,5 @@ public class UsuarioLogado implements Serializable {
     public boolean isAdmin() {
         return this.usuarios.pertenceAoGrupo("ADMIN");
     }
-    
-    // getter e setter
-}*/
+
+}
