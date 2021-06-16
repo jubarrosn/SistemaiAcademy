@@ -1,4 +1,4 @@
-/*package br.com.iacademy.security;
+package br.com.iacademy.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -83,4 +83,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		this.userDetailsService = userDetailsService;
 	}
 
-}*/
+}
