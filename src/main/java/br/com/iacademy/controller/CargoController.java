@@ -73,31 +73,4 @@ public class CargoController {
                }).orElse(ResponseEntity.notFound().build());
     }
     
-	
-	
-	
-	/*@GetMapping("/cargoAll")
-	public List<Cargo> listacargo(){
-		return cargoRepository.findAll();
-	}
-		
-	@GetMapping("/cargoId/{id}")
-	public Optional<Cargo> listaCargoId(@PathVariable(value = "id") long id) {
-		return cargoRepository.findById(id);
-	}
-	
-	@PostMapping("/cargoSave")
-	public Cargo salvaCargo(@RequestBody Cargo cargo) {
-		return cargoRepository.save(cargo);
-	}
-	
-	@DeleteMapping("/cargoDelete")
-	public void deleteCargo(@RequestBody Cargo cargo) {
-		cargoRepository.delete(cargo);
-	}
-	
-	@PutMapping("/cargoUpdate")
-	public Cargo updateCargo(@RequestBody Cargo cargo) {
-		return cargoRepository.save(cargo);
-	}*/
 }
