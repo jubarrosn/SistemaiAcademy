@@ -1,4 +1,4 @@
-/*package br.com.iacademy.controller;
+package br.com.iacademy.controller;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,4 +25,4 @@ public class LoginBean {
         facesUtils.erro("Login ou senha inválido.");
         return null;
     }
-}*/
+}
