@@ -3,7 +3,7 @@ Sistema iAcademy - Desenvolvido por Julia Barros - <a href="https://www.linkedin
 <h3>Telas do sistema:</h3> 
      <p align="center">
         <h4> Tela de Login </h4>
-       <img src="/SistemaiAcademy/src/main/resources/static/materialize/images/TELA LOGIN.JPG">
+       <img src="../resources/static/materialize/images/TELA LOGIN.JPG">
        <img src="" width="350" alt="accessibility text">
        <img src="" width="350" alt="accessibility text">
        <img src="" width="350" alt="accessibility text">   
