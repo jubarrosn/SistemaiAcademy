@@ -3,7 +3,7 @@ Sistema iAcademy - Desenvolvido por Julia Barros - <a href="https://www.linkedin
 <h3>Telas do sistema:</h3> 
      <p align="center">
        <h4> Login </h4>
-       <img src="../resources/static/materialize/images/TELA LOGIN.JPG" width="350">
+       <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/TELA%20LOGIN.jpg">
        <h4> Home Administrativo </h4>
        <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/TELA%20HOME%20ADMINISTRATIVO.jpg">
        <h4> Home Professor </h4>
@@ -14,14 +14,12 @@ Sistema iAcademy - Desenvolvido por Julia Barros - <a href="https://www.linkedin
        <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/CADASTRO%20DE%20ALUNO.jpg">
        <h4> Cadastro de Funcionário </h4>
        <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/CADASTRO%20DE%20FUNCIONARIO.jpg">
-       <h4> Tela de Login </h4>
-       <img src="" width="350">
-       <h4> Tela de Login </h4>
-       <img src="" width="350">
-       <h4> Tela de Login </h4>
-       <img src="" width="350">
-       <h4> Tela de Login </h4>
-       <img src="" width="350">
-       <h4> Tela de Login </h4>
-       <img src="" width="350">
+       <h4> Cadastro de Professor </h4>
+       <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/CADASTRO%20DE%20PROFESSOR.jpg">
+       <h4> Cadastro de Empresa </h4>
+       <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/CADASTRO%20DE%20EMPRESA.jpg">
+       <h4> Cadastro de Treino </h4>
+       <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/CADASTRO%20DE%20TREINO.jpg">
+       <h4> Errors! </h4>
+       <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/TELA%20DE%20ERRO.jpg">
     </p>
