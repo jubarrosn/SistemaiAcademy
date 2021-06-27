@@ -10,6 +10,8 @@ Sistema iAcademy - Desenvolvido por Julia Barros - <a href="https://www.linkedin
        <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/TELA%20HOME%20PROFESSOR.jpg">
        <h4> Home Aluno </h4>
        <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/TELA%20HOME%20ALUNO.jpg">   
+       <h4> Home Aluno: Pesquisa de Treino </h4>
+       <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/TELA%20HOME%20ALUNO%20-%20PESQUISA.jpg">
        <h4> Cadastro de Aluno </h4>
        <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/CADASTRO%20DE%20ALUNO.jpg">
        <h4> Cadastro de Funcionário </h4>
