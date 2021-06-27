@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -73,4 +74,31 @@ public class CargoController {
                }).orElse(ResponseEntity.notFound().build());
     }
     
+	
+	
+	
+	@GetMapping("/cargoAll")
+	public List<Cargo> listacargo(){
+		return cargoRepository.findAll();
+	}
+		
+	@GetMapping("/cargoId/{id}")
+	public Optional<Cargo> listaCargoId(@PathVariable(value = "id") long id) {
+		return cargoRepository.findById(id);
+	}
+	
+	@PostMapping("/cargoSave")
+	public Cargo salvaCargo(@RequestBody Cargo cargo) {
+		return cargoRepository.save(cargo);
+	}
+	
+	@DeleteMapping("/cargoDelete")
+	public void deleteCargo(@RequestBody Cargo cargo) {
+		cargoRepository.delete(cargo);
+	}
+	
+	@PutMapping("/cargoUpdate")
+	public Cargo updateCargo(@RequestBody Cargo cargo) {
+		return cargoRepository.save(cargo);
+	}
 }

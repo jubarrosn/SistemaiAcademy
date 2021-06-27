@@ -45,6 +45,21 @@ public class AlunoController {
 		Aluno aluno = new Aluno();
 		Pessoa pessoa = new Pessoa();
 		
+		pessoa.setPes_cpf(aluno.getPessoa().getPes_cpf());
+		pessoa.setPes_prim_nome(aluno.getPessoa().getPes_prim_nome());
+		pessoa.setPes_sobrenome(aluno.getPessoa().getPes_sobrenome());
+		pessoa.setPes_data_nasc(aluno.getPessoa().getPes_data_nasc());
+		pessoa.setPes_endereco(aluno.getPessoa().getPes_endereco());
+		pessoa.setPes_rg(aluno.getPessoa().getPes_rg());
+		pessoa.setPes_rg_emissao(aluno.getPessoa().getPes_rg_emissao());
+		pessoa.setPes_nacionalidade(aluno.getPessoa().getPes_nacionalidade());
+		pessoa.setPes_naturalidade(aluno.getPessoa().getPes_naturalidade());
+		pessoa.setPes_orient_medic(aluno.getPessoa().getPes_orient_medic());
+		pessoa.setPes_telefone(aluno.getPessoa().getPes_telefone());
+		pessoa.setSexo(aluno.getPessoa().getSexo());
+		aluno.setAltura(aluno.getAltura());
+		aluno.setMassaCorporal(aluno.getMassaCorporal());
+		aluno.setPeso(aluno.getPeso());
 		
 		alunoRepository.save(aluno);
 		pessoaRepository.save(pessoa);
@@ -87,7 +102,7 @@ public class AlunoController {
 		return modelAndView;
 	}
 	
-	public String calculoImc(Object peso, Object altura){
+/*	public String calculoImc(Object peso, Object altura){
 
     	String massaCorporal; 
     	float objpeso = (float) peso;
@@ -121,7 +136,136 @@ public class AlunoController {
 			    			
 	    				}
     }
+	*/
+	/*
+	@RequestMapping(method = RequestMethod.GET, value="/alunoAll")
+	public ModelAndView listar() {
+		
+		ModelAndView andView = new ModelAndView("/buscarAluno");
+		
+		Iterable<Aluno> alunosIt = alunoRepository.findAll();
+		
+		andView.addObject("alunos", alunosIt);
+		
+		andView.addObject("alunoobj", new Aluno());		
+		
+		return andView;
+	}
 	
+	@RequestMapping(method = RequestMethod.GET, value="/alunoEdit/{id_aluno}")
+	public ModelAndView update(@PathVariable("alun_iden") Long alun_iden) {
+		
+		//Optional<Aluno> aluno = alunoRepository.findById(alun_iden);
+		
+		ModelAndView modelAndView = new ModelAndView("/buscarAluno");
+		
+		//modelAndView.addObject("alunoobj", aluno.get());
+		
+		return modelAndView;
+	}
+	
+	
+	@RequestMapping(method = RequestMethod.GET, value="/alunoDelete/{alun_iden}")
+	public ModelAndView delete(@PathVariable("alun_iden") Long alun_iden) {
+		
+		pessoaRepository.deleteById(alun_iden);
+		
+		ModelAndView modelAndView = new ModelAndView("/buscarAluno");
+		
+		modelAndView.addObject("alunos", alunoRepository.findAll());
+
+		modelAndView.addObject("alunoobj", new Aluno());
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="** /buscarAluno")
+			public ResponseEntity<Aluno> Put(@PathVariable(value = "alun_matricula") int alun_matricula, @Valid @RequestBody Aluno newAluno)
+	    {
+	        Optional<Aluno> oldAluno = alunoRepository.findById(alun_matricula);
+	        ResponseEntity<Aluno> modelAndView = null;
+			if(oldAluno.isPresent()){
+        	Aluno aluno = oldAluno.get();
+        	aluno.pessoa.setPes_prim_nome(newAluno.getPessoa().getPes_prim_nome());
+        	aluno.pessoa.setPes_sobrenome(newAluno.getPessoa().getPes_sobrenome());
+        	aluno.pessoa.setPes_endereco(newAluno.getPessoa().getPes_endereco());
+        	aluno.pessoa.setPes_cpf(newAluno.getPessoa().getPes_cpf());
+        	aluno.pessoa.setPes_rg(newAluno.getPessoa().getPes_rg());
+        	aluno.pessoa.setPes_telefone(newAluno.getPessoa().getPes_telefone());
+        	aluno.pessoa.setPes_rg_emissao(newAluno.getPessoa().getPes_rg_emissao());
+        	aluno.pessoa.setPes_data_nasc(newAluno.getPessoa().getPes_data_nasc());
+        	aluno.pessoa.setSexo(newAluno.getPessoa().getSexo());
+        	aluno.pessoa.setPes_naturalidade(newAluno.getPessoa().getPes_naturalidade());
+            aluno.pessoa.setPes_nacionalidade(newAluno.getPessoa().getPes_nacionalidade());
+            aluno.pessoa.setPes_orient_medic(newAluno.getPessoa().getPes_orient_medic());
+        	aluno.setPeso(newAluno.getPeso());
+        	aluno.setAltura(newAluno.getAltura());
+        	this.CalculoImc(aluno.getPeso() , aluno.getAltura());
+        	aluno.setMassaCorporal(newAluno.getMassaCorporal()); 
+        	alunoRepository.save(aluno);
+        	pessoaRepository.save(aluno.pessoa);
+            return new ResponseEntity<Aluno>(aluno, HttpStatus.OK);
+        }
+        else
+            
+		return modelAndView;
+	}
+	
+	public String CalculoImc(Object peso, Object altura){
+
+    	String massaCorporal; 
+    	float objpeso = (float) peso;
+    	float objaltura = (float) altura;
+    	float imc = ((objpeso)/(objaltura*objaltura)); 
+			
+	    	if (imc  < 18.5) {
+	
+	    			massaCorporal = "Abaixo do peso normal";
+	    			return massaCorporal;
+	    			
+	    	}else if (imc >= 18.5 && imc <= 24.9) {
+	    		
+		    			massaCorporal = "Peso normal";
+		    			return massaCorporal;
+		    			
+	    		}else if (imc >= 25 && imc <= 29.9) {
+	    	
+				    		massaCorporal = "Acima do peso normal";
+	    					return massaCorporal;
+		        			
+    				} else if( imc > 30 && imc <= 39.9) {
+    					
+				    			massaCorporal = "Obsidade";
+				    			return massaCorporal;
+				    			
+	    				}else {
+	    					
+	    					massaCorporal = "Obsidade Mórbida";
+			    			return massaCorporal;
+			    			
+	    				}
+    }
+
+	/*@GetMapping
+	public List<Aluno> findAll(){
+	   return (List<Aluno>) alunoRepository.findAll();
+	}
+	
+	
+	@GetMapping(path = {"/{id}"})
+	public ResponseEntity<?> findById(@PathVariable int alun_matricula){
+	   return alunoRepository.findById(alun_matricula)
+	           .map(record -> ResponseEntity.ok().body(null))
+	           .orElse(ResponseEntity.notFound().build());
+	}
+	
+	
+	@RequestMapping(method = RequestMethod.POST, value="** /alunoSave")
+	public Aluno create(@RequestBody Aluno aluno){
+	   alunoRepository.save(aluno);
+	   pessoaRepository.save(aluno.pessoa);
+	   return null;
+	}
 	
 	
     @RequestMapping(value = "/aluno/{id}", method =  RequestMethod.PUT)
@@ -153,5 +297,139 @@ public class AlunoController {
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-   
+    
+    public String CalculoImc(Object peso, Object altura){
+
+    	String massaCorporal; 
+    	float objpeso = (float) peso;
+    	float objaltura = (float) altura;
+    	float imc = ((objpeso)/(objaltura*objaltura)); 
+			
+	    	if (imc  < 18.5) {
+	
+	    			massaCorporal = "Abaixo do peso normal";
+	    			return massaCorporal;
+	    			
+	    	}else if (imc >= 18.5 && imc <= 24.9) {
+	    		
+		    			massaCorporal = "Peso normal";
+		    			return massaCorporal;
+		    			
+	    		}else if (imc >= 25 && imc <= 29.9) {
+	    	
+				    		massaCorporal = "Acima do peso normal";
+	    					return massaCorporal;
+		        			
+    				} else if( imc > 30 && imc <= 39.9) {
+    					
+				    			massaCorporal = "Obsidade";
+				    			return massaCorporal;
+				    			
+	    				}else {
+	    					
+	    					massaCorporal = "Obsidade Mórbida";
+			    			return massaCorporal;
+			    			
+	    				}
+    }
+    
+    @DeleteMapping
+    public ResponseEntity <?> delete(@PathVariable int id) {
+       return alunoRepository.findById(id)
+               .map(record -> {
+            	   alunoRepository.deleteById(id);
+                   return ResponseEntity.ok().build();
+               }).orElse(ResponseEntity.notFound().build());
+    }
+	
+	/**
+	@RequestMapping(method = RequestMethod.GET, value="/cadastroAluno")
+	public ModelAndView inicio() {
+		
+		ModelAndView modelAndView = new ModelAndView("aluno/cadastroAluno");
+		
+		modelAndView.addObject("alunoobj", new Aluno());
+		
+		return modelAndView;
+	}
+	
+			/*
+			@RequestMapping(method = RequestMethod.POST, value="** /alunoSave")
+			public String salvar(Aluno aluno) {
+				
+				alunoRepository.save(aluno);
+				
+				return "aluno/cadastroAluno";
+			
+			}
+			*/
+		
+	/**
+	@RequestMapping(method = RequestMethod.POST, value="** /alunoSave")
+	public ModelAndView salvar(Aluno aluno) {
+		
+		alunoRepository.save(aluno);
+		
+		ModelAndView andView = new ModelAndView("aluno/cadastroAluno");
+		
+		Iterable<Aluno> alunosIt = alunoRepository.findAll();
+		
+		andView.addObject("alunos", alunosIt);
+				
+		return andView;
+	}
+	
+	
+	@RequestMapping(method = RequestMethod.GET, value="/alunoAll")
+	public ModelAndView listar() {
+		
+		ModelAndView andView = new ModelAndView("aluno/alunosCadastrados");
+		
+		Iterable<Aluno> alunosIt = alunoRepository.findAll();
+		
+		andView.addObject("alunos", alunosIt);
+	
+		andView.addObject("alunoobj", new Aluno());
+		
+		return andView;
+	}
+	
+	@GetMapping("/alunoEdit/{alun_matricula}")
+	public ModelAndView editar(@PathVariable("alun_matricula") int alun_matricula) {
+		
+		Optional<Aluno> aluno = alunoRepository.findById(alun_matricula);
+		
+		ModelAndView modelAndView = new ModelAndView("aluno/alunosCadastrados");
+		
+		modelAndView.addObject("alunoobj", aluno.get());
+		
+		return modelAndView;
+	}
+*/
+	/**	
+			@GetMapping("/alunoAll")
+			public List<Aluno> listaAluno(){
+				return (List<Aluno>) alunoRepository.findAll();
+			}
+				
+			@GetMapping("/alunoId/{alun_matricula}")
+			public Optional<Aluno> listaAlunoId(@PathVariable(value = "alun_matricula") int alun_matricula) {
+				return AlunoRepository.findById(alun_matricula);
+			}
+			
+			@PostMapping("/alunoSave")
+			public Aluno salvaAluno(@RequestBody Aluno aluno) {
+				return alunoRepository.save(aluno);
+			}
+			
+			@DeleteMapping("/alunoDelete")
+			public void deleteAluno(@RequestBody Aluno aluno) {
+				alunoRepository.delete(aluno);
+			}
+			
+			@PutMapping("/alunoUpdate")
+			public Aluno updateAluno(@RequestBody Aluno aluno) {
+				return alunoRepository.save(aluno);
+			}
+			*/
 }
