@@ -3,12 +3,15 @@ Sistema iAcademy - Desenvolvido por Julia Barros - <a href="https://www.linkedin
 <h3>Telas do sistema:</h3> 
      <p align="center">
         <h4> Tela de Login </h4>
-       <img src="../resources/static/materialize/images/TELA LOGIN.JPG">
-       <img src="" width="350" alt="accessibility text">
-       <img src="" width="350" alt="accessibility text">
-       <img src="" width="350" alt="accessibility text">   
-       <img src="" width="350" alt="accessibility text">
-       <img src="" width="350" alt="accessibility text">
-       <img src="" width="350" alt="accessibility text">
-       <img src="" width="350" alt="accessibility text">
+       <img src="../resources/static/materialize/images/TELA LOGIN.JPG" width="350">
+       <img src="../resources/static/materialize/images/TELA HOME ADMINISTRATIVO.jpg" width="350">
+       <img src="../resources/static/materialize/images/TELA HOME PROFESSOR.jpg" width="350">
+       <img src="../resources/static/materialize/images/TELA HOME ALUNO.jpg" width="350">   
+       <img src="../resources/static/materialize/images/CADASTRO DE ALUNO.jpg" width="350">
+       <img src="https://github.com/jubarrosn/SistemaiAcademy/blob/main/src/main/resources/static/materialize/images/CADASTRO%20DE%20FUNCIONARIO.jpg" width="350">
+       <img src="" width="350">
+       <img src="" width="350">
+       <img src="" width="350">
+       <img src="" width="350">
+       <img src="" width="350">
     </p>
